@@ -1,0 +1,118 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Cicken Coop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body class="bg-dark text-white">
+    <h2 class="col-12 text-center mt-5">Smart Chicken Coop</h2>
+    <div class="col-8 offset-2 card" id= "divLogin">
+        <div class="card-header">
+            <h3>Login</h3>
+        </div>
+            <div class=card-body>
+                <form>
+                    
+                    <label for="txtUsername" class="form-label">Username:</label>
+                    <input id="txtUsername" type="text" class="form-control">
+                    <label for="txtPassword" class="form-label">Password:</label>
+                    <input id="txtPassword" type="text" class="form-control">
+                    <button id="btnLogin" type="button" class="btn btn-primary">Login</button>
+                    <h3>Get Registered Here</h3>
+                    <button id="btnRegister" type="button" class="btn btn-warning">Register</button>
+                    
+                </form>
+            </div> 
+    </div>             
+    <div class="col-8 offset-2 card" id="divRegister" style="display:none;">
+        <div class="card-header">
+            <h3>Register</h3>
+        </div>
+            <div class=card-body>
+                <form>
+                    
+                    <label for="txtFirstName" class="form-label">First Name</label>
+                    <input id="txtFirstName" type="text" class="form-control">
+                    <label for="strLastName" class="form-label">Last Name</label>
+                    <input id="txtLastName" type="text" class="form-control">
+                    <label for="txtEmail"type="email" class="form-label">Email</label>
+                    <input id="txtEmail" type="email" class="form-control">
+                    <label for="txtPword"type="text" class="form-label">Password</label>
+                    <input id="txtPword" type="text" class="form-control">
+                    <label for="txtStAddress1"type="text" class="form-label">Street Address 1</label>
+                    <input id="txtStAddress1" type="text" class="form-control">
+                    <label for="txtStAddress2"type="text" class="form-label">Street Address 2</label>
+                    <input id="txtStAddress2" type="text" class="form-control">
+                    <label for="txtCity"type="text" class="form-label">City</label>
+                    <input id="txtCity" type="text" class="form-control">
+                    <label for="txtState"type="text" class="form-label">State</label>
+                    <input id="txtState" type="text" class="form-control">
+                    <label for="txtZip"type="number" class="form-label">Zip</label>
+                    <input id="txtZip" type="number" class="form-control">
+                    <label for="txtPhone"type="number" class="form-label">Phone</label>
+                    <input id="txtPhone" type="number" class="form-control">
+                    <label for="txtCoopID"type="number" class="form-label">Coop Registration ID</label>
+                    <input id="txtCoopID" type="number" class="form-control">
+                
+                    <h3>Sign Up</h3>
+                    <button id="btnComplete" type="button" class="btn btn-warning">Complete Registration</button>
+                    <button id="btnReturn" type="button" class="btn btn-danger">Return to Login</button>
+                    
+                    
+                </form>
+            </div>
+        </div>
+        <div class="col-8 offset-2 card" id="divDashboard" style="display:none;">
+            <div class="card-header">
+                <h3>Dashboard</h3>
+            </div>
+                <div class=card-body>
+                    <form>
+                        
+                        <label for="txtFirstName" class="form-label">First Name</label>
+                        <input id="txtFirstName" type="text" class="form-control">
+                        <label for="strLastName" class="form-label">Last Name</label>
+                        <input id="txtLastName" type="text" class="form-control">
+                        <label for="txtEmail"type="email" class="form-label">Email</label>
+                        <input id="txtEmail" type="email" class="form-control">
+                        <label for="txtPword"type="text" class="form-label">Password</label>
+                     
+                    
+                        <h3>Sign Up</h3>
+                        <button id="btnComplete" type="button" class="btn btn-warning">Complete Registration</button>
+                        <button id="btnReturn" type="button" class="btn btn-danger">Return to Login</button>
+                        
+                        
+                    </form>
+                </div>
+            </div>       
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script>
+        $('#btnRegister').on('click', function(){
+            $('#divLogin').slideUp(function(){
+                $('#divRegister').slideDown();
+            });
+        })    
+        $('#btnReturn').on('click', function(){
+            $('#divRegister').slideUp(function(){
+                $('#divLogin').slideDown();
+            });
+        })
+        $('#btnLogin').on('click', function(){
+            $('#divLogin').slideUp(function(){
+                $('#divDashboard').slideDown();
+            });
+        })
+        $('#btnComplete').on('click', function(){
+            $('#divRegister').slideUp(function(){
+                $('#divDashboard').slideDown();
+            });
+        })
+    </script>
+
+</body>
+</html>
