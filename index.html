@@ -15,46 +15,81 @@
             <div class=card-body>
                 <form>
                     
-                    <label for="txtUsername" class="form-label">Username:</label>
+                    <label for="txtUsername" class="form-label" >Username:</label>
                     <input id="txtUsername" type="text" class="form-control">
-                    <label for="txtPassword" class="form-label">Password:</label>
-                    <input id="txtPassword" type="text" class="form-control">
-                    <button id="btnLogin" type="button" class="btn btn-primary">Login</button>
+                    <label for="txtPassword" class="form-label" >Password:</label>
+                    <input id="txtPassword" type="text" class="form-control" >
+                    <button id="btnLogin" type="button" class="btn btn-primary mt-2">Login</button>
+                    <input id="btnRemeberMe" type="checkbox" class="button-check" value="">Remeber Me</button>
                     <h3>Get Registered Here</h3>
                     <button id="btnRegister" type="button" class="btn btn-warning">Register</button>
-                    
                 </form>
             </div> 
     </div>             
-    <div class="col-8 offset-2 card" id="divRegister" style="display:none;">
-        <div class="card-header">
+    <div class="col-8 offset-2 card" id="divRegister" style="display: none;">
+        <div class="card-header" >
             <h3>Register</h3>
         </div>
             <div class=card-body>
                 <form>
-                    
-                    <label for="txtFirstName" class="form-label">First Name</label>
-                    <input id="txtFirstName" type="text" class="form-control">
-                    <label for="strLastName" class="form-label">Last Name</label>
-                    <input id="txtLastName" type="text" class="form-control">
-                    <label for="txtEmail"type="email" class="form-label">Email</label>
-                    <input id="txtEmail" type="email" class="form-control">
-                    <label for="txtPword"type="text" class="form-label">Password</label>
-                    <input id="txtPword" type="text" class="form-control">
-                    <label for="txtStAddress1"type="text" class="form-label">Street Address 1</label>
-                    <input id="txtStAddress1" type="text" class="form-control">
-                    <label for="txtStAddress2"type="text" class="form-label">Street Address 2</label>
-                    <input id="txtStAddress2" type="text" class="form-control">
-                    <label for="txtCity"type="text" class="form-label">City</label>
-                    <input id="txtCity" type="text" class="form-control">
-                    <label for="txtState"type="text" class="form-label">State</label>
-                    <input id="txtState" type="text" class="form-control">
-                    <label for="txtZip"type="number" class="form-label">Zip</label>
-                    <input id="txtZip" type="number" class="form-control">
-                    <label for="txtPhone"type="number" class="form-label">Phone</label>
-                    <input id="txtPhone" type="number" class="form-control">
-                    <label for="txtCoopID"type="number" class="form-label">Coop Registration ID</label>
-                    <input id="txtCoopID" type="number" class="form-control">
+                    <div class="container">
+                        <label for="txtFirstName" class="form-label ">First Name</label>
+                        <span><input id="txtFirstName" type="text" placeholder="Enter your first name">
+                        </span>
+                    </div>
+                    <div class="container">
+                        <label for="txtLastName" class="form-label">Last Name</label>
+                        <span><input id="txtLastName" type="text" placeholder="Enter your last name">
+                        </span>
+                    </div>
+                    <div class="container">
+                        <label for="txtEmail"type="email" class="form-label">Email</label>
+                        <span><input id="txtEmail" type="email" placeholder="Enter your email">
+                        </span>
+                    </div>
+                    <div class="container">
+                        <label for="txtPword"type="text" class="form-label">Password</label>
+                        <span><input id="txtPword" type="password" placeholder="Create a password">
+                        </span>
+                        <label for="txtPwordConfirm"type="text" class="form-label">Confirm Password</label>
+                        <span><input id="txtPword" type="password" placeholder="Create a password">
+                        </span>
+                    </div>
+                    <div class="container">
+                        <label for="txtStAddress1"type="text" class="form-label">Street Address 1</label>
+                        <span><input id="txtStAddress1" type="text" placeholder="Street Address 1">
+                        </span>
+                    </div>
+                    <div class="container">
+                        <label for="txtStAddress2"type="text" class="form-label">Street Address 2</label>
+                        <span><input id="txtStAddress2" type="text" placeholder="Street Address 2">
+                        </span>
+                    </div>
+                    <div class="container">
+                        <label for="txtCity"type="text" class="form-label">City</label>
+                        <span><input id="txtCity" type="text" placeholder="Enter your city">
+                        </span>
+                    </div>
+                    <div class="container">
+                        <label for="txtState"type="text" class="form-label">State</label>
+                        <span><input id="txtState" type="text" placeholder="Enter your State">
+                        </span>
+                    </div>
+                    <div class="container">
+                        <label for="txtZip"type="number" class="form-label">Zip</label>
+                        <span><input id="txtZip" type="number" placeholder="Enter your Zip">
+                        </span>
+                    </div>
+                    <div class="container">
+                        <label for="txtPhone"type="number" class="form-label ">Phone</label>
+                        <span><input id="txtPhone" type="number" placeholder="Enter a Phone Number">
+                        </span>
+                    </div>
+                    <div class="container">
+                        <label for="txtCoopID"type="number" class="form-label">Coop Registration ID</label>
+                        <span><input id="txtCoopID" type="number" placeholder="Create a Unique ID">
+                        </span>
+                    </div>
                 
                     <h3>Sign Up</h3>
                     <button id="btnComplete" type="button" class="btn btn-warning">Complete Registration</button>
@@ -66,25 +101,9 @@
         </div>
         <div class="col-8 offset-2 card" id="divDashboard" style="display:none;">
             <div class="card-header">
-                <h3>Dashboard</h3>
             </div>
                 <div class=card-body>
-                    <form>
-                        
-                        <label for="txtFirstName" class="form-label">First Name</label>
-                        <input id="txtFirstName" type="text" class="form-control">
-                        <label for="strLastName" class="form-label">Last Name</label>
-                        <input id="txtLastName" type="text" class="form-control">
-                        <label for="txtEmail"type="email" class="form-label">Email</label>
-                        <input id="txtEmail" type="email" class="form-control">
-                        <label for="txtPword"type="text" class="form-label">Password</label>
-                     
-                    
-                        <h3>Sign Up</h3>
-                        <button id="btnComplete" type="button" class="btn btn-warning">Complete Registration</button>
-                        <button id="btnReturn" type="button" class="btn btn-danger">Return to Login</button>
-                        
-                        
+                    <form>  
                     </form>
                 </div>
             </div>       
