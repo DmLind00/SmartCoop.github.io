@@ -56,7 +56,7 @@
                             </div>
                             <div class="input-group  mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
                                 <label type="text" class="form-label" style="margin-right: 5px;">Confirm Password:</label>
-                                <input id="txtPword" type="password" placeholder="Retype Password" class="form-control">
+                                <input id="txtPwordCnf" type="password" placeholder="Retype Password" class="form-control">
                             </div>
                             <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
                                 <label type="text" class="form-label" style="margin-right: 5px;">Street Address 1:</label>
@@ -112,9 +112,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $('#btnRegister').on('click', function () {
-            $('#crdRegister').css("background-color", "darkblue");
             $('#divLogin').slideUp(function () {
                 $('#divRegister').slideDown();
             });
@@ -130,9 +130,74 @@
             });
         })
         $('#btnComplete').on('click', function () {
+        let strtxtFirstName =$('#txtFirstName').val();
+        let strtxtLastName =$('#txtLastName').val();
+        let strtxtEmail =$('#txtEmail').val();
+        let strtxtPword =$('#txtPword').val();
+        let strtxtPwordCnf =$('#txtPwordCnf').val();
+        let strtxtStAddress1 =$('#txtStAddress1').val();
+        let strtxtStAddress2 =$('#txtStAddress2').val();
+        let strtxtState =$('#txtState').val();
+        let strtxtZip =$('#txtZip').val();
+        let strtxtPhone =$('#txtPhone').val();
+        let strtxtCoopID=$('#txtCoopID').val();
+        let blnErrorFound = false;
+        let strErrorMessage = '';
+        if(strtxtFirstName == ""){
+            blnErrorFound = true;
+            strErrorMessage += "<p>Please input a First Name</p>"
+        }
+        if(strtxtLastName == ""){
+            blnErrorFound = true;
+            strErrorMessage += "<p>Please input a Last Name</p>"
+        }
+        if(strtxtEmail == ""){
+            blnErrorFound = true;
+            strErrorMessage += "<p>Please input a Email</p>"
+        }
+        if(strtxtPword == ""){
+            blnErrorFound = true;
+            strErrorMessage += "<p>Please input a Password</p>"
+        }
+        if(strtxtPwordCnf == ""){
+            blnErrorFound = true;
+            strErrorMessage += "<p>Please Confirm Password</p>"
+        }
+        if(strtxtStAddress1 == ""){
+            blnErrorFound = true;
+            strErrorMessage += "<p>Please Enter your Street Address</p>"
+        }
+        if(strtxtStAddress2 == ""){
+            blnErrorFound = true;
+            strErrorMessage += "<p>Please Enter a second Street Address</p>"
+        }
+        if(strtxtState == ""){
+            blnErrorFound = true;
+            strErrorMessage += "<p>Please Enter your State</p>"
+        }
+        if(strtxtZip == ""){
+            blnErrorFound = true;
+            strErrorMessage += "<p>Please Enter your Zip</p>"
+        }
+        if(strtxtPhone == ""){
+            blnErrorFound = true;
+            strErrorMessage += "<p>Please Enter your Phone Number</p>"
+        }
+        if(strtxtCoopID == ""){
+            blnErrorFound = true;
+            strErrorMessage += "<p>Please Enter a Coop ID</p>"
+        }
+
+        if(blnErrorFound == true){
             $('#divRegister').slideUp(function () {
                 $('#divDashboard').slideDown();
             });
+            Swal.fire({
+                icon: "error",
+                html: strErrorMessage
+                
+            })
+            }
         })
     </script>
 </body>
