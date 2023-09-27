@@ -15,9 +15,9 @@
             <img src="CluckHub.png" class="col-12" width="100" height="200">
             <form>
                 
-                <label for="txtUsername" class="form-label">Username:</label>
+                <label class="form-label">Username:</label>
                 <input id="txtUsername" type="text" class="form-control">
-                <label for="txtPassword" class="form-label">Password:</label>
+                <label  class="form-label">Password:</label>
                 <input id="txtPassword" type="text" class="form-control">
                 <button id="btnLogin" type="button" class="btn btn-primary mt-2 col-12">Login</button>
                 <button id="btnRegister" type="button" class="btn btn-warning mt-1 col-12">Register Account</button>
@@ -122,13 +122,32 @@
         $('#btnReturn').on('click', function () { 
             $('#divRegister').slideUp(function () {
                 $('#divLogin').slideDown();
-            });
+            })
         })
         $('#btnLogin').on('click', function () {
+        let strtxtUsername =$('#txtUsername').val();
+        let strtxtPassword =('#txtPassword').val()
+        let blnErrorFnd = false;
+        let strErrorMsg = '';
+        if(strtxtUsername == ""){
+            blnErrorFnd = true;
+            strErrorMsg += "<p>Please input your Username</p>"
+        }
+        if(strtxtPassword == ""){
+            blnErrorFnd = true;
+            strErrorMsg += "<p>Please input your Password</p>"
+        }
+        if(blnErrorFound == true){
             $('#divLogin').slideUp(function () {
                 $('#divDashboard').slideDown();
             });
-        })
+            Swal.fire({
+                icon: "error",
+                html: strErrorMsg
+                
+            })
+            }
+            })
         $('#btnComplete').on('click', function () {
         let strtxtFirstName =$('#txtFirstName').val();
         let strtxtLastName =$('#txtLastName').val();
@@ -191,11 +210,10 @@
         if(blnErrorFound == true){
             $('#divRegister').slideUp(function () {
                 $('#divDashboard').slideDown();
-            });
+            })
             Swal.fire({
                 icon: "error",
                 html: strErrorMessage
-                
             })
             }
         })
