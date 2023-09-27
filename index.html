@@ -11,8 +11,8 @@
 
 <body class="text-primary" style="background-color:black; background:url(peacefulFarm.jpeg)" id="bodyClass">
     <div class="col-12 col-md-4 offset-md-4 card mt-5" id="divLogin" style="float: center;">
-        <div class=card-body>
-            <img src="CluckHub.png" class="col-12" width="100" height="200">
+        <div class="card-body" >
+            <img src="CluckHub.png"   class="col-12 mx-auto" width="300px" height="300px">
             <form>
                 
                 <label class="form-label">Username:</label>
@@ -126,7 +126,7 @@
         })
         $('#btnLogin').on('click', function () {
         let strtxtUsername =$('#txtUsername').val();
-        let strtxtPassword =('#txtPassword').val()
+        let strtxtPassword =$('#txtPassword').val()
         let blnErrorFnd = false;
         let strErrorMsg = '';
         if(strtxtUsername == ""){
@@ -137,17 +137,19 @@
             blnErrorFnd = true;
             strErrorMsg += "<p>Please input your Password</p>"
         }
-        if(blnErrorFound == true){
-            $('#divLogin').slideUp(function () {
-                $('#divDashboard').slideDown();
-            });
+        if(blnErrorFnd == true){
+            blnErrorFnd = false;
             Swal.fire({
                 icon: "error",
                 html: strErrorMsg
                 
             })
-            }
-            })
+        }else {
+            $('#divLogin').slideUp(function () {
+                $('#divDashboard').slideDown();
+            });
+        }
+        });
         $('#btnComplete').on('click', function () {
         let strtxtFirstName =$('#txtFirstName').val();
         let strtxtLastName =$('#txtLastName').val();
@@ -206,17 +208,19 @@
             blnErrorFound = true;
             strErrorMessage += "<p>Please Enter a Coop ID</p>"
         }
-
         if(blnErrorFound == true){
-            $('#divRegister').slideUp(function () {
-                $('#divDashboard').slideDown();
-            })
+            blnErrorFound = false;
             Swal.fire({
-                icon: "error",
-                html: strErrorMessage
+            icon: "error",
+            html: strErrorMessage
             })
-            }
+    } else {
+        $('#divRegister').slideUp(function () {
+        $('#divDashboard').slideDown();
         })
+    }
+}
+        )
     </script>
 </body>
 </html>
