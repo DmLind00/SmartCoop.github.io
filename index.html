@@ -24,6 +24,14 @@
             </form>
         </div>
     </div>
+
+    <div class="col-12 col-md-4 offset-md-4 card mt-5" id="divDashboard" style="float: center; display: none">
+        <div class="card-body" >
+            <img src="CluckHub.png"   class="col-12 mx-auto" width="auto" height="auto">
+            
+        </div>
+    </div>
+
     <section class="testimonial py-5" id="divRegister" style="display: none;" >
         <div class="container">
             <div class="row">
@@ -107,8 +115,7 @@
         </div>
     </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
@@ -119,108 +126,156 @@
                 $('#divRegister').slideDown();
             });
         })
+
         $('#btnReturn').on('click', function () { 
             $('#divRegister').slideUp(function () {
                 $('#divLogin').slideDown();
             })
         })
+
         $('#btnLogin').on('click', function () {
-        let strtxtUsername =$('#txtUsername').val();
-        let strtxtPassword =$('#txtPassword').val()
-        let blnErrorFnd = false;
-        let strErrorMsg = '';
-        if(strtxtUsername == ""){
-            blnErrorFnd = true;
-            strErrorMsg += "<p>Please input your Username</p>"
-        }
-        if(strtxtPassword == ""){
-            blnErrorFnd = true;
-            strErrorMsg += "<p>Please input your Password</p>"
-        }
-        if(blnErrorFnd == true){
-            blnErrorFnd = false;
-            Swal.fire({
-                icon: "error",
-                html: strErrorMsg
-                
-            })
-        }else {
-            $('#divLogin').slideUp(function () {
-                $('#divDashboard').slideDown();
-            });
-        }
+            let strtxtUsername =$('#txtUsername').val();
+            let strtxtPassword =$('#txtPassword').val()
+            let blnErrorFnd = false;
+            let strErrorMsg = '';
+            if(strtxtUsername == ""){
+                blnErrorFnd = true;
+                strErrorMsg += "<p>Please input your Username</p>"
+            }
+            if(strtxtPassword == ""){
+                blnErrorFnd = true;
+                strErrorMsg += "<p>Please input your Password</p>"
+            }
+            if(blnErrorFnd == true){
+                blnErrorFnd = false;
+                Swal.fire({
+                    icon: "error",
+                    html: strErrorMsg    
+                })
+            } else {
+                $.post('https://simplecoop.swollenhippo.com/session.php',{Email:strtxtEmail,Password:strtxtPword},function(sessionResult){
+                    sessionResult = JSON.parse(sessionResult);
+                    if(sessionResult.Error){
+                        alert('error') 
+                    } else {
+                        sessionStorage.setItem("SimpleSession",sessionResult.SessionID);
+                        $('#divDashboard').slideToggle();
+                        $('#divLogin').slideToggle();
+                    }
+                })
+                    
+            }
         });
+        
         $('#btnComplete').on('click', function () {
-        let strtxtFirstName =$('#txtFirstName').val();
-        let strtxtLastName =$('#txtLastName').val();
-        let strtxtEmail =$('#txtEmail').val();
-        let strtxtPword =$('#txtPword').val();
-        let strtxtPwordCnf =$('#txtPwordCnf').val();
-        let strtxtStAddress1 =$('#txtStAddress1').val();
-        let strtxtStAddress2 =$('#txtStAddress2').val();
-        let strtxtState =$('#txtState').val();
-        let strtxtZip =$('#txtZip').val();
-        let strtxtPhone =$('#txtPhone').val();
-        let strtxtCoopID=$('#txtCoopID').val();
-        let blnErrorFound = false;
-        let strErrorMessage = '';
-        if(strtxtFirstName == ""){
-            blnErrorFound = true;
-            strErrorMessage += "<p>Please input a First Name</p>"
-        }
-        if(strtxtLastName == ""){
-            blnErrorFound = true;
-            strErrorMessage += "<p>Please input a Last Name</p>"
-        }
-        if(strtxtEmail == ""){
-            blnErrorFound = true;
-            strErrorMessage += "<p>Please input a Email</p>"
-        }
-        if(strtxtPword == ""){
-            blnErrorFound = true;
-            strErrorMessage += "<p>Please input a Password</p>"
-        }
-        if(strtxtPwordCnf == ""){
-            blnErrorFound = true;
-            strErrorMessage += "<p>Please Confirm Password</p>"
-        }
-        if(strtxtStAddress1 == ""){
-            blnErrorFound = true;
-            strErrorMessage += "<p>Please Enter your Street Address</p>"
-        }
-        if(strtxtStAddress2 == ""){
-            blnErrorFound = true;
-            strErrorMessage += "<p>Please Enter a second Street Address</p>"
-        }
-        if(strtxtState == ""){
-            blnErrorFound = true;
-            strErrorMessage += "<p>Please Enter your State</p>"
-        }
-        if(strtxtZip == ""){
-            blnErrorFound = true;
-            strErrorMessage += "<p>Please Enter your Zip</p>"
-        }
-        if(strtxtPhone == ""){
-            blnErrorFound = true;
-            strErrorMessage += "<p>Please Enter your Phone Number</p>"
-        }
-        if(strtxtCoopID == ""){
-            blnErrorFound = true;
-            strErrorMessage += "<p>Please Enter a Coop ID</p>"
-        }
-        if(blnErrorFound == true){
-            blnErrorFound = false;
-            Swal.fire({
-            icon: "error",
-            html: strErrorMessage
-            })
-    } else {
-        $('#divRegister').slideUp(function () {
-        $('#divDashboard').slideDown();
+            let strtxtFirstName =$('#txtFirstName').val();
+            let strtxtLastName =$('#txtLastName').val();
+            let strtxtEmail =$('#txtEmail').val();
+            let strtxtPword =$('#txtPword').val();
+            let strtxtPwordCnf =$('#txtPwordCnf').val();
+            let strtxtStAddress1 =$('#txtStAddress1').val();
+            let strtxtStAddress2 =$('#txtStAddress2').val();
+            let strtxtCity =$('#txtCity').val();
+            let strtxtState =$('#txtState').val();
+            let strtxtZip =$('#txtZip').val();
+            let strtxtPhone =$('#txtPhone').val();
+            let strtxtCoopID=$('#txtCoopID').val();
+            let blnErrorFound = false;
+            let strErrorMessage = '';
+            if(strtxtFirstName == ""){
+                blnErrorFound = true;
+                strErrorMessage += "<p>Please input a First Name</p>"
+            }
+            if(strtxtLastName == ""){
+                blnErrorFound = true;
+                strErrorMessage += "<p>Please input a Last Name</p>"
+            }
+            if(strtxtEmail == ""){
+                blnErrorFound = true;
+                strErrorMessage += "<p>Please input a Email</p>"
+            }
+            if(strtxtPword == ""){
+                blnErrorFound = true;
+                strErrorMessage += "<p>Please input a Password</p>"
+            }
+            if(strtxtPwordCnf == ""){
+                blnErrorFound = true;
+                strErrorMessage += "<p>Please Confirm Password</p>"
+            }
+            if(strtxtStAddress1 == ""){
+                blnErrorFound = true;
+                strErrorMessage += "<p>Please Enter your Street Address</p>"
+            }
+            if(strtxtStAddress2 == ""){
+                blnErrorFound = true;
+                strErrorMessage += "<p>Please Enter a second Street Address</p>"
+            }
+            if(strtxtCity == ""){
+                blnErrorFound = true;
+                strErrorMessage += "<p>Please Enter your City</p>"
+            }
+            if(strtxtState == ""){
+                blnErrorFound = true;
+                strErrorMessage += "<p>Please Enter your State</p>"
+            }
+            if(strtxtZip == ""){
+                blnErrorFound = true;
+                strErrorMessage += "<p>Please Enter your Zip</p>"
+            }
+            if(strtxtPhone == ""){
+                blnErrorFound = true;
+                strErrorMessage += "<p>Please Enter your Phone Number</p>"
+            }
+            if(strtxtCoopID == ""){
+                blnErrorFound = true;
+                strErrorMessage += "<p>Please Enter a Coop ID</p>"
+            }
+            if(blnErrorFound == true){
+                blnErrorFound = false;
+                Swal.fire({
+                icon: "error",
+                html: strErrorMessage
+                })
+
+            } else {
+                $.post('https://simplecoop.swollenhippo.com/users.php',{Email: strtxtEmail, Password: strtxtPword, FirstName: strtxtFirstName, LastName: strtxtLastName, CoopID: strtxtCoopID},function(result){
+                    result = JSON.parse(result);
+                    if(result.Error){
+                        Swal.fire({
+                            icon: 'danger',
+                            html:result.error
+                        })
+                        
+                    } else {
+                        $.post('https://simplecoop.swollenhippo.com/useraddress.php',{Email: strtxtEmail, Street1: strtxtStAddress1, Street2: strtxtStAddress2, City: strtxtCity, State: strtxtState, ZIP: strtxtZip},function(result){
+                            result = JSON.parse(result);
+                            if(result.Error){
+                                Swal.fire({
+                                    icon: 'danger',
+                                    html:result.error
+                                })
+                            }else{
+                                $.post('https://simplecoop.swollenhippo.com/sessions.php',{Email: strtxtEmail, Password: strtxtPword},function(sessionResult){
+                                    sessionResult = JSON.parse(sessionResult);
+                                    if(sessionResult.Error){
+                                            Swal.fire({
+                                                icon: 'danger',
+                                                html:result.error
+                                            })
+                                    } else {
+                                            sessionStorage.setItem("SimpleSession",sessionResult.SessionID);
+                                            $('#divLogin').slideToggle();
+                                            $('#divRegister').slideToggle();
+                                    }
+                                
+                                })
+                            }
+                        })
+                    }
+            
+                })
+            }
         })
-    }
-}
-        )
-    </script>
+</script>
 </body>
 </html>
