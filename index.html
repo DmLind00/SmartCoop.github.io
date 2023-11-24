@@ -16,7 +16,7 @@
             <form>
                 
                 <label class="form-label">Username:</label>
-                <input id="txtUsername" type="text" class="form-control">
+                <input id="txtUsername" type="email" class="form-control">
                 <label  class="form-label">Password:</label>
                 <input id="txtPassword" type="text" class="form-control">
                 <button id="btnLogin" type="button" class="btn btn-primary mt-2 col-12">Login</button>
@@ -153,7 +153,7 @@
                     html: strErrorMsg    
                 })
             } else {
-                $.post('https://simplecoop.swollenhippo.com/session.php',{Email:strtxtEmail,Password:strtxtPword},function(sessionResult){
+                $.post('https://simplecoop.swollenhippo.com/sessions.php',{Email:strtxtUsername,Password:strtxtPassword},function(sessionResult){
                     sessionResult = JSON.parse(sessionResult);
                     if(sessionResult.Error){
                         alert('error') 
