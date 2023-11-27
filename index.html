@@ -1,281 +1,389 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Cicken Coop</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-</head>
-
-<body class="text-primary" style="background-color:black; background:url(peacefulFarm.jpeg)" id="bodyClass">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  </head>
+  <body class="text-primary" style="background-color:black; background:url(peacefulFarm.jpeg)" id="bodyClass">
     <div class="col-12 col-md-4 offset-md-4 card mt-5" id="divLogin" style="float: center;">
-        <div class="card-body" >
-            <img src="CluckHub.png"   class="col-12 mx-auto" width="auto" height="auto">
-            <form>
-                
-                <label class="form-label">Username:</label>
-                <input id="txtUsername" type="email" class="form-control">
-                <label  class="form-label">Password:</label>
-                <input id="txtPassword" type="text" class="form-control">
-                <button id="btnLogin" type="button" class="btn btn-primary mt-2 col-12">Login</button>
-                <button id="btnRegister" type="button" class="btn btn-warning mt-1 col-12">Register Account</button>
-            </form>
-        </div>
+      <div class="card-body">
+        <img src="CluckHub.png" class="col-12 mx-auto" width="auto" height="auto">
+        <form>
+          <label class="form-label">Username:</label>
+          <input id="txtUsername" type="email" class="form-control">
+          <label class="form-label">Password:</label>
+          <input id="txtPassword" type="text" class="form-control">
+          <button id="btnLogin" type="button" class="btn btn-primary mt-2 col-12">Login</button>
+          <button id="btnRegister" type="button" class="btn btn-warning mt-1 col-12">Register Account</button>
+        </form>
+      </div>
     </div>
-
-    <div class="col-12 col-md-4 offset-md-4 card mt-5" id="divDashboard" style="float: center; display: none">
-        <div class="card-body" >
-            <img src="CluckHub.png"   class="col-12 mx-auto" width="auto" height="auto">
-            
+    <div class="col-12 col-md-8 offset-md-2 card mt-5" id="divDashboard" style="float: center;">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="button" id="">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Dropdown </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="#">Action</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Another action</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+          </div>
         </div>
-    </div>
-
-    <section class="testimonial py-5" id="divRegister" style="display: none;" >
-        <div class="container">
-            <div class="row">
-                <div class="col-8 col-md-4 py-1 d-flex justify-content-center align-items-center vh-100 col-12" >
-                    <div>
-                        <div class="card-body">
-                            <img src="CluckHub.png" style="max-width: 100%; margin-bottom: auto; margin-top: auto;">
-                        </div>
-                    </div>
+      </nav>
+      <body>
+        <div class="card-body">
+          <div class="container" id="TestRun">
+            <div class="border border-primary rounded" style="position: relative; display: inline-block;">
+              <div class="image-container">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-thermometer-half" viewBox="0 0 16 16">
+                  <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415" />
+                  <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1" />
+                </svg>
+                <div class="overlay-text">Temperature Control</div>
+                <div class="slide-container">
+                  <div class="value-container">
+                    <span id="demo">0</span>
+                  </div>
+                  <input type="range" min="45" max="89" value="0" class="slider" id="myRange">
                 </div>
-                <div class="col-md-8 py-5 rounded align-items-center" style="background-color: white;">
-                    <form  class="col-12 col-md-10 col-sm-6">
-                        <h4 class="pb-4 " style="text-align: center; color: black;" for="Register a new account">Register a New Account</h4>
-                        <div class="form-row" style="text-align: justify;">
-                            <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <label  class="form-label" style="margin-right: 5px;">First Name:</label>
-                                <input id="txtFirstName" type="text" placeholder="Enter your first name" class="form-control" style="margin-right: 20px;">
-                            </div>
-                            <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <label  class="form-label" style="margin-right: 5px;">Last Name:</label>
-                                <input id="txtLastName" type="text" placeholder="Enter your last name" class="form-control" style="margin-right: 20px;">
-                            </div>
-                            <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <label  type="email" class="form-label" style="margin-right: 5px;">Email:</label>
-                                <input id="txtEmail" type="email" placeholder="Enter your email" class="form-control">
-                            </div>
-                            <div class="input-group  mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <label  type="text" class="form-label" style="margin-right: 5px;">Password:</label>
-                                <input id="txtPword" type="password" placeholder="Create a password" class="form-control" style="margin-right: 20px;">
-                            </div>
-                            <div class="input-group  mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <label type="text" class="form-label" style="margin-right: 5px;">Confirm Password:</label>
-                                <input id="txtPwordCnf" type="password" placeholder="Retype Password" class="form-control">
-                            </div>
-                            <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <label type="text" class="form-label" style="margin-right: 5px;">Street Address 1:</label>
-                                <input id="txtStAddress1" type="text" placeholder="Enter Street Address 1" class="form-control" style="margin-right: 20px;">
-                            </div>
-                            <div class="input-group  mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <label type="text" class="form-label" style="margin-right: 5px;">Street Address 2:</label>
-                                <input id="txtStAddress2" type="text" placeholder="Enter Street Address 2" class=" form-control">
-                            </div>
-                            <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <label type="text" class="form-label" style="width: fit-content; margin-right: 5px;">City:</label>
-                                <input id="txtCity" type="text" placeholder="Enter your city" class="form-control" style="margin-right: 20px;">
-                            </div>
-                            <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <span class="input-group-addon" style="width: fit-content;"></span>
-                                <label type="text" class="form-label" style="width: fit-content; margin-right: 5px; ">State:</label>
-                                <input id="txtState" type="text" placeholder="Enter your State" class="form-control" style="margin-right: 20px;">
-                            </div>
-                            <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <label type="number" class="form-label" style="width: fit-content; margin-right: 5px;">Zip:</label>
-                                <input id="txtZip" type="number" placeholder="Enter your Zip" class="form-control">
-                            </div>
-                            <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <label type="number" class="form-label" style="width: fit-content; margin-right: 5px;">Phone:</label>
-                                <input  id="txtPhone" type="number" placeholder="Enter your Phone Number" class="form-control">
-                            </div>
-                            <div class="input-group mb-3 center" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <label type="number" class="form-label" style="width: fit-content; margin-right: 5px;">Coop Registration ID:</label>
-                                <input  id="txtCoopID" type="number" placeholder="Create a Unique ID"class="form-control">
-                            </div>
-                            <div class="container mb-3" style="text-align: center;">
-                                <button id="btnComplete" type="button" class="btn btn-warning" aria-label="Create Account">Create Account</button>
-                            </div>
-                            <div class="container mb-3" style="text-align: center; color: black;">
-                                <footer style="text-align: center;">
-                                    <p>Already have an account? Click here:<button id="btnReturn" type="button" class="btn btn-danger" style="background: none!important;
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="container">
+                <div class="border border-primary rounded" style="position: relative; display: inline-block;">
+                  <div class="image-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
+                      <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1" />
+                      <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5M4 1.934V15h6V1.077z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-door-closed-fill" viewBox="0 0 16 16">
+                      <path d="M12 1a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2a1 1 0 0 1 1-1zm-2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
+                    </svg>
+                    <p>Door Control.</p>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                      <label class="form-check-label" for="flexSwitchCheckDefault">Door Control</label>
+                    </div>
+                    <p>No one is better than John Doe.</p>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="container">
+                    <div class="border border-primary rounded" style="position: relative; display: inline-block;">
+                      <div class="image-container" id="btnLbOn">
+                        <button type="button" class="btn">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16" id="LbOn">
+                            <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6m6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1" />
+                          </svg>
+                        </button>
+                      </div>
+                      <div class="image-container" id="btnLbOff" style="display: none;">
+                        <button type="button" class="btn">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-lightbulb-fill" viewBox="0 0 16 16" id="LbOff">
+                            <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6m3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5" />
+                          </svg>
+                        </button>
+                      </div>
+                      <div class="card-body" style="display: inline-block;"></div>
+                      <p>Door Control.</p>
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Light on or off</label>
+                      </div>
+                      <p>No one is better than John Doe.</p>
+                    </div>
+                  </div>
+      </body>
+    </div>
+    <section class="testimonial py-5" id="divRegister" style="display: none;">
+      <div class="container">
+        <div class="row">
+          <div class="col-8 col-md-4 py-1 d-flex justify-content-center align-items-center vh-100 col-12">
+            <div>
+              <div class="card-body">
+                <img src="CluckHub.png" style="max-width: 100%; margin-bottom: auto; margin-top: auto;">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 py-5 rounded align-items-center" style="background-color: white;">
+            <form class="col-12 col-md-10 col-sm-6">
+              <h4 class="pb-4 " style="text-align: center; color: black;" for="Register a new account">Register a New Account</h4>
+              <div class="form-row" style="text-align: justify;">
+                <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <label class="form-label" style="margin-right: 5px;">First Name:</label>
+                  <input id="txtFirstName" type="text" placeholder="Enter your first name" class="form-control" style="margin-right: 20px;">
+                </div>
+                <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <label class="form-label" style="margin-right: 5px;">Last Name:</label>
+                  <input id="txtLastName" type="text" placeholder="Enter your last name" class="form-control" style="margin-right: 20px;">
+                </div>
+                <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <label type="email" class="form-label" style="margin-right: 5px;">Email:</label>
+                  <input id="txtEmail" type="email" placeholder="Enter your email" class="form-control">
+                </div>
+                <div class="input-group  mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <label type="text" class="form-label" style="margin-right: 5px;">Password:</label>
+                  <input id="txtPword" type="password" placeholder="Create a password" class="form-control" style="margin-right: 20px;">
+                </div>
+                <div class="input-group  mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <label type="text" class="form-label" style="margin-right: 5px;">Confirm Password:</label>
+                  <input id="txtPwordCnf" type="password" placeholder="Retype Password" class="form-control">
+                </div>
+                <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <label type="text" class="form-label" style="margin-right: 5px;">Street Address 1:</label>
+                  <input id="txtStAddress1" type="text" placeholder="Enter Street Address 1" class="form-control" style="margin-right: 20px;">
+                </div>
+                <div class="input-group  mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <label type="text" class="form-label" style="margin-right: 5px;">Street Address 2:</label>
+                  <input id="txtStAddress2" type="text" placeholder="Enter Street Address 2" class=" form-control">
+                </div>
+                <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <label type="text" class="form-label" style="width: fit-content; margin-right: 5px;">City:</label>
+                  <input id="txtCity" type="text" placeholder="Enter your city" class="form-control" style="margin-right: 20px;">
+                </div>
+                <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <span class="input-group-addon" style="width: fit-content;"></span>
+                  <label type="text" class="form-label" style="width: fit-content; margin-right: 5px; ">State:</label>
+                  <input id="txtState" type="text" placeholder="Enter your State" class="form-control" style="margin-right: 20px;">
+                </div>
+                <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <label type="number" class="form-label" style="width: fit-content; margin-right: 5px;">Zip:</label>
+                  <input id="txtZip" type="number" placeholder="Enter your Zip" class="form-control">
+                </div>
+                <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <label type="number" class="form-label" style="width: fit-content; margin-right: 5px;">Phone:</label>
+                  <input id="txtPhone" type="number" placeholder="Enter your Phone Number" class="form-control">
+                </div>
+                <div class="input-group mb-3 center" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <label type="number" class="form-label" style="width: fit-content; margin-right: 5px;">Coop Registration ID:</label>
+                  <input id="txtCoopID" type="number" placeholder="Create a Unique ID" class="form-control">
+                </div>
+                <div class="container mb-3" style="text-align: center;">
+                  <button id="btnComplete" type="button" class="btn btn-warning" aria-label="Create Account">Create Account</button>
+                </div>
+                <div class="container mb-3" style="text-align: center; color: black;">
+                  <footer style="text-align: center;">
+                    <p>Already have an account? Click here: <button id="btnReturn" type="button" class="btn btn-danger" style="background: none!important;
                                         border: none;
                                         padding: 0!important;
                                         font-family: poppins, sans-serif;
                                         color: blue;
                                         text-decoration: underline;
-                                        cursor: pointer;">Sign in</button></p>
-                                  </footer>
-                            </div>
-                    </form>
+                                        cursor: pointer;">Sign in</button>
+                    </p>
+                  </footer>
                 </div>
-            </div>
+            </form>
+          </div>
         </div>
-    </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        $('#btnRegister').on('click', function () {
-            $('#divLogin').slideUp(function () {
-                $('#divRegister').slideDown();
-            });
+      </div>
+      </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script>
+        $('#btnRegister').on('click', function() {
+          $('#divLogin').slideUp(function() {
+            $('#divRegister').slideDown();
+          });
         })
-
-        $('#btnReturn').on('click', function () { 
-            $('#divRegister').slideUp(function () {
-                $('#divLogin').slideDown();
+        $('#btnReturn').on('click', function() {
+          $('#divRegister').slideUp(function() {
+            $('#divLogin').slideDown();
+          })
+        })
+        $('#btnLogin').on('click', function() {
+          let strtxtUsername = $('#txtUsername').val();
+          let strtxtPassword = $('#txtPassword').val()
+          let blnErrorFnd = false;
+          let strErrorMsg = '';
+          if (strtxtUsername == "") {
+            blnErrorFnd = true;
+            strErrorMsg += " < p > Please input your Username < /p>"
+          }
+          if (strtxtPassword == "") {
+            blnErrorFnd = true;
+            strErrorMsg += " < p > Please input your Password < /p>"
+          }
+          if (blnErrorFnd == true) {
+            blnErrorFnd = false;
+            Swal.fire({
+              icon: "error",
+              html: strErrorMsg
             })
-        })
-
-        $('#btnLogin').on('click', function () {
-            let strtxtUsername =$('#txtUsername').val();
-            let strtxtPassword =$('#txtPassword').val()
-            let blnErrorFnd = false;
-            let strErrorMsg = '';
-            if(strtxtUsername == ""){
-                blnErrorFnd = true;
-                strErrorMsg += "<p>Please input your Username</p>"
-            }
-            if(strtxtPassword == ""){
-                blnErrorFnd = true;
-                strErrorMsg += "<p>Please input your Password</p>"
-            }
-            if(blnErrorFnd == true){
-                blnErrorFnd = false;
-                Swal.fire({
-                    icon: "error",
-                    html: strErrorMsg    
-                })
-            } else {
-                $.post('https://simplecoop.swollenhippo.com/sessions.php',{Email:strtxtUsername,Password:strtxtPassword},function(sessionResult){
-                    sessionResult = JSON.parse(sessionResult);
-                    if(sessionResult.Error){
-                        alert('error') 
-                    } else {
-                        sessionStorage.setItem("SimpleSession",sessionResult.SessionID);
-                        $('#divDashboard').slideToggle();
-                        $('#divLogin').slideToggle();
-                    }
-                })
-                    
-            }
+          } else {
+            $.post('https://simplecoop.swollenhippo.com/sessions.php', {
+              Email: strtxtUsername,
+              Password: strtxtPassword
+            }, function(sessionResult) {
+              sessionResult = JSON.parse(sessionResult);
+              if (sessionResult.Error) {
+                alert('error')
+              } else {
+                sessionStorage.setItem("SimpleSession", sessionResult.SessionID);
+                $('#divDashboard').slideToggle();
+                $('#divLogin').slideToggle();
+              }
+            })
+          }
         });
-        
-        $('#btnComplete').on('click', function () {
-            let strtxtFirstName =$('#txtFirstName').val();
-            let strtxtLastName =$('#txtLastName').val();
-            let strtxtEmail =$('#txtEmail').val();
-            let strtxtPword =$('#txtPword').val();
-            let strtxtPwordCnf =$('#txtPwordCnf').val();
-            let strtxtStAddress1 =$('#txtStAddress1').val();
-            let strtxtStAddress2 =$('#txtStAddress2').val();
-            let strtxtCity =$('#txtCity').val();
-            let strtxtState =$('#txtState').val();
-            let strtxtZip =$('#txtZip').val();
-            let strtxtPhone =$('#txtPhone').val();
-            let strtxtCoopID=$('#txtCoopID').val();
-            let blnErrorFound = false;
-            let strErrorMessage = '';
-            if(strtxtFirstName == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please input a First Name</p>"
-            }
-            if(strtxtLastName == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please input a Last Name</p>"
-            }
-            if(strtxtEmail == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please input a Email</p>"
-            }
-            if(strtxtPword == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please input a Password</p>"
-            }
-            if(strtxtPwordCnf == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please Confirm Password</p>"
-            }
-            if(strtxtStAddress1 == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please Enter your Street Address</p>"
-            }
-            if(strtxtStAddress2 == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please Enter a second Street Address</p>"
-            }
-            if(strtxtCity == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please Enter your City</p>"
-            }
-            if(strtxtState == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please Enter your State</p>"
-            }
-            if(strtxtZip == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please Enter your Zip</p>"
-            }
-            if(strtxtPhone == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please Enter your Phone Number</p>"
-            }
-            if(strtxtCoopID == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please Enter a Coop ID</p>"
-            }
-            if(blnErrorFound == true){
-                blnErrorFound = false;
-                Swal.fire({
-                icon: "error",
-                html: strErrorMessage
-                })
-
-            } else {
-                $.post('https://simplecoop.swollenhippo.com/users.php',{Email: strtxtEmail, Password: strtxtPword, FirstName: strtxtFirstName, LastName: strtxtLastName, CoopID: strtxtCoopID},function(result){
-                    result = JSON.parse(result);
-                    if(result.Error){
-                        Swal.fire({
-                            icon: 'danger',
-                            html:result.error
-                        })
-                        
-                    } else {
-                        $.post('https://simplecoop.swollenhippo.com/useraddress.php',{Email: strtxtEmail, Street1: strtxtStAddress1, Street2: strtxtStAddress2, City: strtxtCity, State: strtxtState, ZIP: strtxtZip},function(result){
-                            result = JSON.parse(result);
-                            if(result.Error){
-                                Swal.fire({
-                                    icon: 'danger',
-                                    html:result.error
-                                })
-                            }else{
-                                $.post('https://simplecoop.swollenhippo.com/sessions.php',{Email: strtxtEmail, Password: strtxtPword},function(sessionResult){
-                                    sessionResult = JSON.parse(sessionResult);
-                                    if(sessionResult.Error){
-                                            Swal.fire({
-                                                icon: 'danger',
-                                                html:result.error
-                                            })
-                                    } else {
-                                            sessionStorage.setItem("SimpleSession",sessionResult.SessionID);
-                                            $('#divLogin').slideToggle();
-                                            $('#divRegister').slideToggle();
-                                    }
-                                
-                                })
-                            }
-                        })
-                    }
-            
-                })
-            }
+        //click events for dashboard
+        $('#btnLbOn').on('click', function() {
+          $('#LbOn').toggle();
+          $('#LbOff').toggle();
         })
-</script>
-</body>
+        //End click events
+        $('#btnComplete').on('click', function() {
+          let strtxtFirstName = $('#txtFirstName').val();
+          let strtxtLastName = $('#txtLastName').val();
+          let strtxtEmail = $('#txtEmail').val();
+          let strtxtPword = $('#txtPword').val();
+          let strtxtPwordCnf = $('#txtPwordCnf').val();
+          let strtxtStAddress1 = $('#txtStAddress1').val();
+          let strtxtStAddress2 = $('#txtStAddress2').val();
+          let strtxtCity = $('#txtCity').val();
+          let strtxtState = $('#txtState').val();
+          let strtxtZip = $('#txtZip').val();
+          let strtxtPhone = $('#txtPhone').val();
+          let strtxtCoopID = $('#txtCoopID').val();
+          let blnErrorFound = false;
+          let strErrorMessage = '';
+          if (strtxtFirstName == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please input a First Name < /p>"
+          }
+          if (strtxtLastName == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please input a Last Name < /p>"
+          }
+          if (strtxtEmail == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please input a Email < /p>"
+          }
+          if (strtxtPword == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please input a Password < /p>"
+          }
+          if (strtxtPwordCnf == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please Confirm Password < /p>"
+          }
+          if (strtxtStAddress1 == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please Enter your Street Address < /p>"
+          }
+          if (strtxtStAddress2 == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please Enter a second Street Address < /p>"
+          }
+          if (strtxtCity == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please Enter your City < /p>"
+          }
+          if (strtxtState == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please Enter your State < /p>"
+          }
+          if (strtxtZip == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please Enter your Zip < /p>"
+          }
+          if (strtxtPhone == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please Enter your Phone Number < /p>"
+          }
+          if (strtxtCoopID == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please Enter a Coop ID < /p>"
+          }
+          if (blnErrorFound == true) {
+            blnErrorFound = false;
+            Swal.fire({
+              icon: "error",
+              html: strErrorMessage
+            })
+          } else {
+            $.post('https://simplecoop.swollenhippo.com/users.php', {
+              Email: strtxtEmail,
+              Password: strtxtPword,
+              FirstName: strtxtFirstName,
+              LastName: strtxtLastName,
+              CoopID: strtxtCoopID
+            }, function(result) {
+              result = JSON.parse(result);
+              if (result.Error) {
+                Swal.fire({
+                  icon: 'danger',
+                  html: result.error
+                })
+              } else {
+                $.post('https://simplecoop.swollenhippo.com/useraddress.php', {
+                  Email: strtxtEmail,
+                  Street1: strtxtStAddress1,
+                  Street2: strtxtStAddress2,
+                  City: strtxtCity,
+                  State: strtxtState,
+                  ZIP: strtxtZip
+                }, function(result) {
+                  result = JSON.parse(result);
+                  if (result.Error) {
+                    Swal.fire({
+                      icon: 'danger',
+                      html: result.error
+                    })
+                  } else {
+                    $.post('https://simplecoop.swollenhippo.com/sessions.php', {
+                      Email: strtxtEmail,
+                      Password: strtxtPword
+                    }, function(sessionResult) {
+                      sessionResult = JSON.parse(sessionResult);
+                      if (sessionResult.Error) {
+                        Swal.fire({
+                          icon: 'danger',
+                          html: result.error
+                        })
+                      } else {
+                        sessionStorage.setItem("SimpleSession", sessionResult.SessionID);
+                        $('#divLogin').slideToggle();
+                        $('#divRegister').slideToggle();
+                      }
+                    })
+                  }
+                })
+              }
+            })
+          }
+        })
+      </script>
+  </body>
 </html>
