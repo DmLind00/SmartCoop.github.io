@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Cicken Coop</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
   </head>
   <body class="text-primary" style="background-color:black; background:url(peacefulFarm.jpeg)" id="bodyClass">
-    <div class="col-12 col-md-4 offset-md-4 card mt-5" id="divLogin" style="float: center;">
+    <div class="col-12 col-md-4 offset-md-4 card mt-5" id="divLogin" style="float: center; ">
       <div class="card-body">
         <img src="CluckHub.png" class="col-12 mx-auto" width="auto" height="auto">
         <form>
@@ -20,7 +21,7 @@
         </form>
       </div>
     </div>
-    <div class="col-12 col-md-8 offset-md-2 card mt-5" id="divDashboard" style="float: center;">
+    <div class="col-12 col-md-8 offset-md-2 card mt-5" id="divDashboard" style="float: center; background-color: rgb(230, 201, 164); display: none;">
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Navbar</a>
@@ -33,95 +34,81 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="button" id="">Link</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Dropdown </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" href="#">Action</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Another action</a>
-                  </li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link disabled" aria-disabled="true">Disabled</a>
               </li>
             </ul>
+
           </div>
         </div>
       </nav>
       <body>
-        <div class="card-body">
-          <div class="container" id="TestRun">
-            <div class="border border-primary rounded" style="position: relative; display: inline-block;">
-              <div class="image-container">
-                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-thermometer-half" viewBox="0 0 16 16">
-                  <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415" />
-                  <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1" />
-                </svg>
-                <div class="overlay-text">Temperature Control</div>
-                <div class="slide-container">
-                  <div class="value-container">
-                    <span id="demo">0</span>
-                  </div>
-                  <input type="range" min="45" max="89" value="0" class="slider" id="myRange">
+        <div class="card-body" id="TestRun">
+            <div class="col-12 row" >
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="image-container">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-thermometer-half" viewBox="0 0 16 16">
+                                  <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415" />
+                                  <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1" />
+                                </svg>
+                                <div class="overlay-text">Temperature Control</div>
+                                <div class="slide-container">
+                                    <div class="value-container">
+                                        <span id="demo">45</span>
+                                    </div>
+                                    <input type="range" min="45" max="89" value="0" class="slider" id="myRange">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="image-container">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
+                                  <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1" />
+                                  <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5M4 1.934V15h6V1.077z" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-door-closed-fill" viewBox="0 0 16 16">
+                                  <path d="M12 1a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2a1 1 0 0 1 1-1zm-2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
+                                </svg>
+                                <p>Door Control.</p>
+                                <div class="form-check form-switch">
+                                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                  <label class="form-check-label" for="flexSwitchCheckDefault">Door Control</label>
+                                </div>
+                                <p>No one is better than John Doe.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="image-container" id="btnLbOn">
+                                <button type="button" class="btn">
+                                    <i class="bi bi-lightbulb text-warning" style="font-size: 65px;" id="light" data-state="on"></i>
+                                </button>
+                            </div>
+                            <div class="image-container" id="btnLbOff" style="display: none;">
+                                <button type="button" class="btn">
+                                    <i class="bi bi-lightbulb-off"></i>
+                                </button>
+                            </div>
+                            <div class="card-body" style="display: inline-block;">
+                              <p>Door Control.</p>
+                              <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">Light on or off</label>
+                              </div>
+                              <p>No one is better than John Doe.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-              <div class="container">
-                <div class="border border-primary rounded" style="position: relative; display: inline-block;">
-                  <div class="image-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
-                      <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1" />
-                      <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5M4 1.934V15h6V1.077z" />
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-door-closed-fill" viewBox="0 0 16 16">
-                      <path d="M12 1a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2a1 1 0 0 1 1-1zm-2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
-                    </svg>
-                    <p>Door Control.</p>
-                    <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                      <label class="form-check-label" for="flexSwitchCheckDefault">Door Control</label>
-                    </div>
-                    <p>No one is better than John Doe.</p>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <div class="container">
-                    <div class="border border-primary rounded" style="position: relative; display: inline-block;">
-                      <div class="image-container" id="btnLbOn">
-                        <button type="button" class="btn">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16" id="LbOn">
-                            <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6m6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1" />
-                          </svg>
-                        </button>
-                      </div>
-                      <div class="image-container" id="btnLbOff" style="display: none;">
-                        <button type="button" class="btn">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-lightbulb-fill" viewBox="0 0 16 16" id="LbOff">
-                            <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6m3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5" />
-                          </svg>
-                        </button>
-                      </div>
-                      <div class="card-body" style="display: inline-block;"></div>
-                      <p>Door Control.</p>
-                      <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Light on or off</label>
-                      </div>
-                      <p>No one is better than John Doe.</p>
-                    </div>
-                  </div>
       </body>
     </div>
     <section class="testimonial py-5" id="divRegister" style="display: none;">
@@ -212,6 +199,10 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <script>
+        $('#myRange').on('change', function(){
+            let mRange = $('#myRange').val();
+            $('#demo').text(mRange)
+        })
         $('#btnRegister').on('click', function() {
           $('#divLogin').slideUp(function() {
             $('#divRegister').slideDown();
@@ -258,9 +249,20 @@
           }
         });
         //click events for dashboard
-        $('#btnLbOn').on('click', function() {
-          $('#LbOn').toggle();
-          $('#LbOff').toggle();
+        $('#btnLbOn').on('click',function(){
+            let strState = $(this).attr('data-state');
+            if(strState == 'on'){
+                $('#btnLbOn').attr('data-state','off');
+                $('#light').addClass('bi-lightbulb-off');
+                $('#light').removeClass('bi-lightbulb');
+                $('#light').removeClass('text-warning');
+            } else {
+                $('#btnLbOn').attr('data-state','on');
+                $('#light').addClass('bi-lightbulb');
+                $('#light').removeClass('bi-lightbulb-off');
+                $('#light').addClass('text-warning');
+            }
+            
         })
         //End click events
         $('#btnComplete').on('click', function() {
