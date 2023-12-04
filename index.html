@@ -46,7 +46,7 @@
                         <div class="card-body">
                             <div class="image-container">
                               <i class="bi bi-thermometer text-info" style="font-size: 65px;" id="thermometer"></i>
-                                <div aria-label="Temperature Control" class="overlay-text">Temperature Control</div>
+                                <div class="overlay-text">Temperature Control</div>
                                 <div class="slide-container">
                                     <div class="value-container">
                                         <span id="demo">45</span>
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <div class="card" style="background-color: rgb(77, 127, 110); min-height: 275px; justify-content: center;">
+                    <div class="card" style="background-color: rgb(77, 127, 110); min-height: 275px;">
                         <div class="card-body"> <!-- This is the Door -->
                           <div class="image-container" id="btnDopen">
                             <button type="button" class="btn">
@@ -108,11 +108,12 @@
                           <div class="card-body">
                               <div class="image-container">
                                 <i class="bi bi-egg-fill text-white" style="font-size: 65px;" id="egg"></i>
-                                  <div class="overlay-text">Egg Counter</div>
-                                  <div class="slide-container">
-                                      <div class="value-container">
-                                          <span id="demo">45</span>
-                                      </div>
+                                  <div>
+                                    <label type="text">Current Egg Count</label>
+                                    <input id="eggnumber" type="number" value="50">
+                                    <label type="text">New Eggs Laid</label>
+                                    <input id="eggupdate" type="number">
+                                    <button id="btnegg" class="btn btn-warning mt-1">Add Eggs Laid</button>
                                   </div>
                               </div>
                           </div>
@@ -120,36 +121,44 @@
                   </div>
                   <div class="col-4">
                       <div class="card mt-5" style="background-color: rgb(77, 127, 110); min-height: 275px;">
-                          <div class="card-body"> <!-- This is Food -->
-                            <div class="image-container" id="btnFeed">
-                              <button type="button" class="btn" role="button">
-                                  <i class="bi bi-bag text-warning" style="font-size: 65px;" id="food" data-state="on"></i>
+                          <div class="card-body"> <!-- This is the Light -->
+                            <div class="image-container" id="btnLbOn">
+                              <button type="button" class="btn">
+                                  <i class="bi bi-door-open text-warning" style="font-size: 65px;" id="light" data-state="on"></i>
                               </button>
                             </div>
                             <div class="image-container" id="btnLbOff" style="display: none;">
-                              <button type="button" class="btn" role="button">
-                                  <i class="bi bi-bag-x"></i>
+                              <button type="button" class="btn">
+                                  <i class="bi bi-lightbulb-off"></i>
                               </button>
                             </div>
                                   <p>Door Control.</p>
+                                  <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">Door Control</label>
+                                  </div>
                               </div>
                           </div>
                       </div>
                       <div class="col-4">
                         <div class="card mt-5" style="background-color: rgb(77, 127, 110); min-height: 275px;">
                             <div class="card-body">
-                                <div class="image-container" id="btnVOn"> <!-- This is Live Video -->
+                                <div class="image-container" id="btnLbOn"> <!-- This is the door -->
                                     <button type="button" class="btn">
-                                        <i class="bi bi-camera-video-off text-warning" style="font-size: 65px;" id="vid" data-state="on"></i>
+                                        <i class="bi bi-lightbulb text-warning" style="font-size: 65px;" id="light" data-state="on"></i>
                                     </button>
                                 </div>
-                                <div class="image-container" id="btnVOn" style="display: none;">
+                                <div class="image-container" id="btnLbOff" style="display: none;">
                                     <button type="button" class="btn">
-                                        <i class="bi bi-camera-video-on"></i>
+                                        <i class="bi bi-lightbulb-off"></i>
                                     </button>
                                 </div>
                                 <div class="card-body" style="display: inline-block;">
-                                  <p>Live Feed</p>
+                                  <p>Door Control.</p>
+                                  <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                    <label class="form-check-label" style="color: white;" for="flexSwitchCheckDefault">Light on or off</label>
+                                  </div>
                                 </div>
                             </div>
                         </div>
@@ -329,38 +338,6 @@
             }
           })
 
-        //Camera
-        $('#btnVOn').on('click',function(){
-            let strState = $(this).attr('data-state');
-            if(strState == 'on'){
-                $('#btnVOn').attr('data-state','off');
-                $('#vid').addClass('bi bi-camera-video');
-                $('#vid').removeClass('bi bi-camera-video-off');
-                $('#vid').removeClass('text-warning');
-            } else {
-                $('#btnVOn').attr('data-state','on');
-                $('#vid').addClass('bi bi-camera-video-off');
-                $('#vid').removeClass('bi bi-camera-video');
-                $('#vid').addClass('text-warning');
-            }
-          })  
-
-          //Feed
-        $('#btnFeed').on('click',function(){
-            let strState = $(this).attr('data-state');
-            if(strState == 'on'){
-                $('#btnFeed').attr('data-state','off');
-                $('#food').addClass('bi bi-bag-x');
-                $('#food').removeClass('bi bi-bag');
-                $('#food').removeClass('text-warning');
-            } else {
-                $('#btnFeed').attr('data-state','on');
-                $('#food').addClass('bi bi-bag');
-                $('#food').removeClass('bi bi-bag-x');
-                $('#food').addClass('text-warning');
-            }
-          })
-
 
 //
           $('#myRange').on('change',function(){
@@ -390,6 +367,14 @@
                 $('#thermometer').removeClass('text-warning');
             }
           })
+
+          $('#btnegg').on('click',function(){
+            let intCurrent = $('#eggnumber').val() * 1;
+            let intAdd = $('#eggupdate').val() * 1;
+            let intTotal = intCurrent + intAdd;
+            $('#eggnumber').val(intTotal);
+            $('#eggupdate').val('');
+})
 
         //End click events
         $('#btnComplete').on('click', function() {
