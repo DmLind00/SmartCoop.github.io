@@ -121,14 +121,14 @@
                   <div class="col-4">
                       <div class="card mt-5" style="background-color: rgb(77, 127, 110); min-height: 275px;">
                           <div class="card-body"> <!-- This is Food -->
-                            <div class="image-container" id="btnLbOn">
-                              <button type="button" class="btn">
-                                  <i class="bi bi-door-open text-warning" style="font-size: 65px;" id="light" data-state="on"></i>
+                            <div class="image-container" id="btnFeed">
+                              <button type="button" class="btn" role="button">
+                                  <i class="bi bi-bag text-warning" style="font-size: 65px;" id="food" data-state="on"></i>
                               </button>
                             </div>
                             <div class="image-container" id="btnLbOff" style="display: none;">
-                              <button type="button" class="btn">
-                                  <i class="bi bi-lightbulb-off"></i>
+                              <button type="button" class="btn" role="button">
+                                  <i class="bi bi-bag-x"></i>
                               </button>
                             </div>
                                   <p>Door Control.</p>
@@ -147,9 +147,6 @@
                                     <button type="button" class="btn">
                                         <i class="bi bi-camera-video-on"></i>
                                     </button>
-                                    <iframe width="420" height="315"
-                                      src="https://www.youtube.com/watch?v=H6_YpVBzqNw?autoplay=1&mute=1">
-                                    </iframe>
                                 </div>
                                 <div class="card-body" style="display: inline-block;">
                                   <p>Live Feed</p>
@@ -335,18 +332,34 @@
         //Camera
         $('#btnVOn').on('click',function(){
             let strState = $(this).attr('data-state');
-            if(strState == 'off'){
-                $('#btnDopen').attr('data-state','on');
-                $('#vid').addClass('bi-camera-video-on');
+            if(strState == 'on'){
+                $('#btnVOn').attr('data-state','off');
+                $('#vid').addClass('bi bi-camera-video');
                 $('#vid').removeClass('bi bi-camera-video-off');
                 $('#vid').removeClass('text-warning');
             } else {
-                $('#btnDopen').attr('data-state','off');
+                $('#btnVOn').attr('data-state','on');
                 $('#vid').addClass('bi bi-camera-video-off');
-                $('#vid').removeClass('bi-camera-video-on');
+                $('#vid').removeClass('bi bi-camera-video');
                 $('#vid').addClass('text-warning');
             }
           })  
+
+          //Feed
+        $('#btnFeed').on('click',function(){
+            let strState = $(this).attr('data-state');
+            if(strState == 'on'){
+                $('#btnFeed').attr('data-state','off');
+                $('#food').addClass('bi bi-bag-x');
+                $('#food').removeClass('bi bi-bag');
+                $('#food').removeClass('text-warning');
+            } else {
+                $('#btnFeed').attr('data-state','on');
+                $('#food').addClass('bi bi-bag');
+                $('#food').removeClass('bi bi-bag-x');
+                $('#food').addClass('text-warning');
+            }
+          })
 
 
 //
