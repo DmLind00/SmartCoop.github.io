@@ -8,6 +8,24 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
   </head>
   <body class="text-primary" style="background-color:black; background:url(peacefulFarm.jpeg)" id="bodyClass">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary " id="Navbar" style="display: none;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <div class="col-12 col-md-4 offset-md-4 card mt-5" id="divLogin" style="float: center; ">
       <div class="card-body">
         <img src="CluckHub.png" class="col-12 mx-auto" width="auto" height="auto">
@@ -20,33 +38,14 @@
       </div>
     </div>
     <div class="col-12 col-md-8 offset-md-2 card mt-5" id="divDashboard" style="float: center; background-color: rgb(230, 201, 164); display: none;">
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-              </li>
-            </ul>
-
-          </div>
-        </div>
-      </nav>
-      <body>
+      <div>
         <div class="card-body" id="TestRun">
             <div class="col-12 row" >
                 <div class="col-4">
                     <div class="card" style="background-color: rgb(77, 127, 110);">
                         <div class="card-body">
                             <div class="image-container">
-                              <i class="bi bi-thermometer" style="font-size: 65px;" id="thermometer"></i>
+                              <i class="bi bi-thermometer text-info" style="font-size: 65px;" id="thermometer"></i>
                                 <div class="overlay-text">Temperature Control</div>
                                 <div class="slide-container">
                                     <div class="value-container">
@@ -60,51 +59,113 @@
                 </div>
                 <div class="col-4">
                     <div class="card" style="background-color: rgb(77, 127, 110);">
-                        <div class="card-body">
-                            <div class="image-container">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
-                                  <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1" />
-                                  <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5M4 1.934V15h6V1.077z" />
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-door-closed-fill" viewBox="0 0 16 16">
-                                  <path d="M12 1a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2a1 1 0 0 1 1-1zm-2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
-                                </svg>
+                        <div class="card-body"> <!-- This is the Light -->
+                          <div class="image-container" id="btnLbOn">
+                            <button type="button" class="btn">
+                                <i class="bi bi-door-open text-warning" style="font-size: 65px;" id="light" data-state="on"></i>
+                            </button>
+                          </div>
+                          <div class="image-container" id="btnLbOff" style="display: none;">
+                            <button type="button" class="btn">
+                                <i class="bi bi-lightbulb-off"></i>
+                            </button>
+                          </div>
                                 <p>Door Control.</p>
                                 <div class="form-check form-switch">
                                   <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                                   <label class="form-check-label" for="flexSwitchCheckDefault">Door Control</label>
                                 </div>
-                                <p>No one is better than John Doe.</p>
                             </div>
                         </div>
                     </div>
+                    <div class="col-4">
+                      <div class="card" style="background-color: rgb(77, 127, 110);">
+                          <div class="card-body">
+                              <div class="image-container" id="btnLbOn"> <!-- This is the door -->
+                                  <button type="button" class="btn">
+                                      <i class="bi bi-lightbulb text-warning" style="font-size: 65px;" id="light" data-state="on"></i>
+                                  </button>
+                              </div>
+                              <div class="image-container" id="btnLbOff" style="display: none;">
+                                  <button type="button" class="btn">
+                                      <i class="bi bi-lightbulb-off"></i>
+                                  </button>
+                              </div>
+                              <div class="card-body" style="display: inline-block;">
+                                <p>Door Control.</p>
+                                <div class="form-check form-switch">
+                                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                  <label class="form-check-label" style="color: white;" for="flexSwitchCheckDefault">Light on or off</label>
+                                </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
                 </div>
-                <div class="col-4">
-                    <div class="card" style="background-color: rgb(77, 127, 110);">
-                        <div class="card-body">
+                <div class="col-12 row" >
+                  <div class="col-4">
+                      <div class="card" style="background-color: rgb(77, 127, 110);">
+                          <div class="card-body">
+                              <div class="image-container">
+                                <i class="bi bi-thermometer text-info" style="font-size: 65px;" id="thermometer"></i>
+                                  <div class="overlay-text">Temperature Control</div>
+                                  <div class="slide-container">
+                                      <div class="value-container">
+                                          <span id="demo">45</span>
+                                      </div>
+                                      <input type="range" min="45" max="89" value="0" class="slider" id="myRange">
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-4">
+                      <div class="card" style="background-color: rgb(77, 127, 110);">
+                          <div class="card-body"> <!-- This is the Light -->
                             <div class="image-container" id="btnLbOn">
-                                <button type="button" class="btn">
-                                    <i class="bi bi-lightbulb text-warning" style="font-size: 65px;" id="light" data-state="on"></i>
-                                </button>
+                              <button type="button" class="btn">
+                                  <i class="bi bi-door-open text-warning" style="font-size: 65px;" id="light" data-state="on"></i>
+                              </button>
                             </div>
                             <div class="image-container" id="btnLbOff" style="display: none;">
-                                <button type="button" class="btn">
-                                    <i class="bi bi-lightbulb-off"></i>
-                                </button>
+                              <button type="button" class="btn">
+                                  <i class="bi bi-lightbulb-off"></i>
+                              </button>
                             </div>
-                            <div class="card-body" style="display: inline-block;">
-                              <p>Door Control.</p>
-                              <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                                <label class="form-check-label" style="color: white;" for="flexSwitchCheckDefault">Light on or off</label>
+                                  <p>Door Control.</p>
+                                  <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">Door Control</label>
+                                  </div>
                               </div>
-                              <p>No one is better than John Doe.</p>
+                          </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="card" style="background-color: rgb(77, 127, 110);">
+                            <div class="card-body">
+                                <div class="image-container" id="btnLbOn"> <!-- This is the door -->
+                                    <button type="button" class="btn">
+                                        <i class="bi bi-lightbulb text-warning" style="font-size: 65px;" id="light" data-state="on"></i>
+                                    </button>
+                                </div>
+                                <div class="image-container" id="btnLbOff" style="display: none;">
+                                    <button type="button" class="btn">
+                                        <i class="bi bi-lightbulb-off"></i>
+                                    </button>
+                                </div>
+                                <div class="card-body" style="display: inline-block;">
+                                  <p>Door Control.</p>
+                                  <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                    <label class="form-check-label" style="color: white;" for="flexSwitchCheckDefault">Light on or off</label>
+                                  </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                  </div>
             </div>
-      </body>
+          </div>
     </div>
 </div>
     <section class="testimonial py-5" id="divRegister" style="display: none;">
@@ -240,6 +301,7 @@
                 sessionStorage.setItem("SimpleSession", sessionResult.SessionID);
                 $('#divDashboard').slideToggle();
                 $('#divLogin').slideToggle();
+                $('#Navbar').slideDown();
               }
             })
           }
@@ -278,8 +340,9 @@
 
 
 //
-          $('#thermometer').on('change',function(){
+          $('#myRange').on('change',function(){
             let mRange = $('#myRange').val();
+            console.log(mRange)
             if(mRange <= 60){
                 $('#thermometer').addClass('bi-thermometer');
                 $('#thermometer').addClass('text-primary');
