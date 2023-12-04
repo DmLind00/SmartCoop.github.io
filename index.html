@@ -41,7 +41,7 @@
       <div>
         <div class="card-body" id="TestRun">
             <div class="col-12 row" >
-                <div class="col-12 col-md-4"> <!-- This is the Temperature -->
+                <div class="col-12 col-md-4">
                     <div class="card" style="background-color: rgb(77, 127, 110); min-height: 275px;">
                         <div class="card-body">
                             <div class="image-container">
@@ -70,19 +70,6 @@
                                 <i class="bi bi-lightbulb-off"></i>
                             </button>
                           </div>
-                <div class="col-4">
-                    <div class="card" style="background-color: rgb(77, 127, 110);">
-                        <div class="card-body"> <!-- This is the Door -->
-                          <div class="image-container" id="btnDopen">
-                            <button type="button" class="btn">
-                                <i class="bi bi-door-open text-warning" style="font-size: 65px;" id="door" data-state="on"></i>
-                            </button>
-                          </div>
-                          <div class="image-container" id="btnLbOff" style="display: none;">
-                            <button type="button" class="btn">
-                                <i class="bi bi-door-closed"></i>
-                            </button>
-                          </div>
                                 <p>Door Control.</p>
                                 <div class="form-check form-switch">
                                   <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
@@ -95,29 +82,6 @@
                       <div class="card" style="background-color: rgb(77, 127, 110); min-height: 275px;">
                           <div class="card-body">
                               <div class="image-container" id="btnLbOn"> <!-- This is the door -->
-                                  <button type="button" class="btn">
-                                      <i class="bi bi-lightbulb text-warning" style="font-size: 65px;" id="light" data-state="on"></i>
-                                  </button>
-                              </div>
-                              <div class="image-container" id="btnLbOff" style="display: none;">
-                                  <button type="button" class="btn">
-                                      <i class="bi bi-lightbulb-off"></i>
-                                  </button>
-                              </div>
-                              <div class="card-body" style="display: inline-block;">
-                                <p>Door Control.</p>
-                                <div class="form-check form-switch">
-                                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                                  <label class="form-check-label" style="color: white;" for="flexSwitchCheckDefault">Light on or off</label>
-                                </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                    <div class="col-4">
-                      <div class="card" style="background-color: rgb(77, 127, 110);">
-                          <div class="card-body">
-                              <div class="image-container" id="btnLbOn"> <!-- This is the Light -->
                                   <button type="button" class="btn">
                                       <i class="bi bi-lightbulb text-warning" style="font-size: 65px;" id="light" data-state="on"></i>
                                   </button>
@@ -157,26 +121,6 @@
                   <div class="col-4">
                       <div class="card mt-5" style="background-color: rgb(77, 127, 110); min-height: 275px;">
                           <div class="card-body"> <!-- This is the Light -->
-                <div class="col-12 row" >
-                  <div class="col-4">
-                      <div class="card" style="background-color: rgb(77, 127, 110);">
-                          <div class="card-body">
-                              <div class="image-container"> 
-                                <i class="bi bi-thermometer text-info" style="font-size: 65px;" id="thermometer"></i>
-                                  <div class="overlay-text">Temperature Control</div>
-                                  <div class="slide-container">
-                                      <div class="value-container">
-                                          <span id="demo">45</span>
-                                      </div>
-                                      <input type="range" min="45" max="89" value="0" class="slider" id="myRange">
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-4">
-                      <div class="card" style="background-color: rgb(77, 127, 110);">
-                          <div class="card-body"> <!-- This is the Light -->
                             <div class="image-container" id="btnLbOn">
                               <button type="button" class="btn">
                                   <i class="bi bi-door-open text-warning" style="font-size: 65px;" id="light" data-state="on"></i>
@@ -197,28 +141,6 @@
                       </div>
                       <div class="col-4">
                         <div class="card mt-5" style="background-color: rgb(77, 127, 110); min-height: 275px;">
-                            <div class="card-body">
-                                <div class="image-container" id="btnLbOn"> <!-- This is the door -->
-                                    <button type="button" class="btn">
-                                        <i class="bi bi-lightbulb text-warning" style="font-size: 65px;" id="light" data-state="on"></i>
-                                    </button>
-                                </div>
-                                <div class="image-container" id="btnLbOff" style="display: none;">
-                                    <button type="button" class="btn">
-                                        <i class="bi bi-lightbulb-off"></i>
-                                    </button>
-                                </div>
-                                <div class="card-body" style="display: inline-block;">
-                                  <p>Door Control.</p>
-                                  <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                                    <label class="form-check-label" style="color: white;" for="flexSwitchCheckDefault">Light on or off</label>
-                                  </div>
-                                </div>
-                          </div>
-                      </div>
-                      <div class="col-4">
-                        <div class="card" style="background-color: rgb(77, 127, 110);">
                             <div class="card-body">
                                 <div class="image-container" id="btnLbOn"> <!-- This is the door -->
                                     <button type="button" class="btn">
@@ -404,14 +326,14 @@
             let strState = $(this).attr('data-state');
             if(strState == 'on'){
                 $('#btnDopen').attr('data-state','off');
-                $('#door').addClass('bi bi-door-closed');
-                $('#door').removeClass('bi bi-door-open');
-                $('#door').removeClass('text-warning');
+                $('#light').addClass('bi bi-door-closed');
+                $('#light').removeClass('bi bi-door-open');
+                $('#light').removeClass('text-warning');
             } else {
                 $('#btnDopen').attr('data-state','on');
-                $('#door').addClass('bi bi-door-open');
-                $('#door').removeClass('bi bi-door-closed');
-                $('#door').addClass('text-warning');
+                $('#light').addClass('bi bi-door-open');
+                $('#light').removeClass('bi bi-door-closed');
+                $('#light').addClass('text-warning');
             }
           })
 
