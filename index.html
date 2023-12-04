@@ -52,10 +52,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="image-container">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-thermometer-half" viewBox="0 0 16 16">
-                                  <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415" />
-                                  <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1" />
-                                </svg>
+                              <i class="bi bi-thermometer" style="font-size: 65px;" id="thermometer"></i>
                                 <div class="overlay-text">Temperature Control</div>
                                 <div class="slide-container">
                                     <div class="value-container">
@@ -284,18 +281,30 @@
 
 
 //
-          $('#btnDopen').on('click',function(){
-            let strState = $(this).attr('data-state');
-            if(strState == 'on'){
-                $('#btnDopen').attr('data-state','off');
-                $('#light').addClass('bi bi-door-closed');
-                $('#light').removeClass('bi bi-door-open');
-                $('#light').removeClass('text-warning');
+          $('#thermometer').on('change',function(){
+            let mRange = $('#myRange').val();
+            if(mRange <= 60){
+                $('#thermometer').addClass('bi-thermometer');
+                $('#thermometer').addClass('text-primary');
+                $('#thermometer').removeClass('bi bi-thermometer-half');
+                $('#thermometer').removeClass('text-warning');
+                $('#thermometer').removeClass('bi bi-thermometer-high');
+                $('#thermometer').removeClass('text-danger');
+            } else if(mRange >= 61 && mRange <=75){
+                $('#thermometer').addClass('bi bi-thermometer-half');
+                $('#thermometer').addClass('text-warning');
+                $('#thermometer').removeClass('bi-thermometer');
+                $('#thermometer').removeClass('text-primary');
+                $('#thermometer').removeClass('bi bi-thermometer-high');
+                $('#thermometer').removeClass('text-danger');
+
             } else {
-                $('#btnDopen').attr('data-state','on');
-                $('#light').addClass('bi bi-door-open');
-                $('#light').removeClass('bi bi-door-closed');
-                $('#light').addClass('text-warning');
+                $('#thermometer').addClass('bi bi-thermometer-high');
+                $('#thermometer').addClass('text-danger');
+                $('#thermometer').removeClass('bi-thermometer');
+                $('#thermometer').removeClass('text-primary');
+                $('#thermometer').removeClass('bi bi-thermometer-half');
+                $('#thermometer').removeClass('text-warning');
             }
           })
 
