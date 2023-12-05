@@ -329,6 +329,12 @@
             $('#divRegister').slideDown();
           });
         })
+        $('#btnLogoutNav').on('click',function(){
+          console.log ("LogoutClick")
+          $('#divDashboard').slideUp();
+          $('#Navbar').slideUp();
+          $('#divLogin').slideDown();
+        })
         $('#btnReturn').on('click', function() {
           $('#divRegister').slideUp(function() {
             $('#divLogin').slideDown();
@@ -341,11 +347,11 @@
           let strErrorMsg = '';
           if (strtxtUsername == "") {
             blnErrorFnd = true;
-            strErrorMsg += "  Please input your Username, "
+            strErrorMsg += " < p > Please input your Username < /p>"
           }
           if (strtxtPassword == "") {
             blnErrorFnd = true;
-            strErrorMsg += "  Please input your Password "
+            strErrorMsg += " < p > Please input your Password < /p>"
           }
           if (blnErrorFnd == true) {
             blnErrorFnd = false;
@@ -366,16 +372,68 @@
                 $('#divDashboard').slideToggle();
                 $('#divLogin').slideToggle();
                 $('#Navbar').slideDown();
+                $.get('https://simplecoop.swollenhippo.com/settings.php',{SessionID:sessionStorage.getItem('SimpleSession'), setting:'temp'},function(result){
+                    result = JSON.parse(result);
+                    $('#myRange').val(result.Value)
+                    console.log(result);
+                })
+                $.get('https://simplecoop.swollenhippo.com/settings.php',{SessionID:sessionStorage.getItem('SimpleSession'), setting:'door'},function(result){
+                    result = JSON.parse(result);
+                    if(result.Value == 'on'){
+                        //Update your dashboard to show that the door is open
+                        $('#btnDopen').attr('data-state','on');
+                        $('#door').addClass('bi bi-door-open');
+                        $('#door').removeClass('bi bi-door-closed');
+                        $('#door').addClass('text-warning');
+                    } else {
+                        //Update your dashboard to show that the door is closed
+                        $('#btnDopen').attr('data-state','off');
+                        $('#door').addClass('bi bi-door-closed');
+                        $('#door').removeClass('bi bi-door-open');
+                        $('#door').removeClass('text-warning');
+                    }
+                    console.log(result);
+                })
+                $.get('https://simplecoop.swollenhippo.com/settings.php',{SessionID:sessionStorage.getItem('SimpleSession'), setting:'lights'},function(result){
+                    result = JSON.parse(result);
+                    if(result.Value == 'on'){
+                        //Update your dashboard to show that the lights are on
+                        $('#btnLbOn').attr('data-state','on');
+                        $('#light').addClass('bi-lightbulb');
+                        $('#light').removeClass('bi-lightbulb-off');
+                        $('#light').addClass('text-warning');
+                    } else {
+                        //Update your dashboard to show that the lights are off
+                        $('#btnLbOn').attr('data-state','off');
+                        $('#light').addClass('bi-lightbulb-off');
+                        $('#light').removeClass('bi-lightbulb');
+                        $('#light').removeClass('text-warning');
+                    }
+                    console.log(result);
+                })
+                $.get('https://simplecoop.swollenhippo.com/settings.php',{SessionID:sessionStorage.getItem('SimpleSession'), setting:'food'},function(result){
+                    result = JSON.parse(result);
+                    if(result.Value == 'on'){
+                        //Update your dashboard to show that you are feeding
+                        $('#btnFeed').attr('data-state','on');
+                        $('#feed').addClass('bi bi-bag');
+                        $('#feed').removeClass('bi bi-bag-x');
+                        $('#feed').addClass('text-warning');
+                    } else {
+                        //Update your dashboard to show that you are not feeding
+                        $('#btnFeed').attr('data-state','off');
+                        $('#feed').addClass('bi bi-bag-x');
+                        $('#feed').removeClass('bi bi-bag');
+                        $('#feed').removeClass('text-warning');
+                    }
+                    console.log(result);
+                })
               }
             })
+            
           }
         });
-        $('#btnLogoutNav').on('click',function(){
-          console.log ("LogoutClick")
-          $('#divDashboard').slideUp();
-          $('#Navbar').slideUp();
-          $('#divLogin').slideDown();
-        })
+        
         //click events for dashboard
         $('#btnLbOn').on('click',function(){
             let strState = $(this).attr('data-state');
@@ -400,11 +458,35 @@
                 $('#door').addClass('bi bi-door-closed');
                 $('#door').removeClass('bi bi-door-open');
                 $('#door').removeClass('text-warning');
+                $.ajax({
+                    url: 'https://simplecoop.swollenhippo.com/settings.php',
+                    type: 'PUT',
+                    data: {SessionID:sessionStorage.getItem('SimpleSession'), setting:'door', value:'off'}, // Convert data to JSON string if sending JSON data
+                    success: function(response) {
+                      response = JSON.parse(response)
+                      console.log(response); // Handle the response from the server
+                    },
+                    error: function(error) {
+                      console.error('Error making PUT request:', error);
+                    }
+                });
             } else {
                 $('#btnDopen').attr('data-state','on');
                 $('#door').addClass('bi bi-door-open');
                 $('#door').removeClass('bi bi-door-closed');
                 $('#door').addClass('text-warning');
+                $.ajax({
+                    url: 'https://simplecoop.swollenhippo.com/settings.php',
+                    type: 'PUT',
+                    data: {SessionID:sessionStorage.getItem('SimpleSession'), setting:'door', value:'on'}, // Convert data to JSON string if sending JSON data
+                    success: function(response) {
+                      response = JSON.parse(response)
+                      console.log(response); // Handle the response from the server
+                    },
+                    error: function(error) {
+                      console.error('Error making PUT request:', error);
+                    }
+                });
             }
           })
 
@@ -416,16 +498,40 @@
                 $('#feed').addClass('bi bi-bag-x');
                 $('#feed').removeClass('bi bi-bag');
                 $('#feed').removeClass('text-warning');
+                $.ajax({
+                    url: 'https://simplecoop.swollenhippo.com/settings.php',
+                    type: 'PUT',
+                    data: {SessionID:sessionStorage.getItem('SimpleSession'), setting:'food', value:'off'}, // Convert data to JSON string if sending JSON data
+                    success: function(response) {
+                      response = JSON.parse(response)
+                      console.log(response); // Handle the response from the server
+                    },
+                    error: function(error) {
+                      console.error('Error making PUT request:', error);
+                    }
+                });
             } else {
                 $('#btnFeed').attr('data-state','on');
                 $('#feed').addClass('bi bi-bag');
                 $('#feed').removeClass('bi bi-bag-x');
                 $('#feed').addClass('text-warning');
+                $.ajax({
+                    url: 'https://simplecoop.swollenhippo.com/settings.php',
+                    type: 'PUT',
+                    data: {SessionID:sessionStorage.getItem('SimpleSession'), setting:'food', value:'on'}, // Convert data to JSON string if sending JSON data
+                    success: function(response) {
+                      response = JSON.parse(response)
+                      console.log(response); // Handle the response from the server
+                    },
+                    error: function(error) {
+                      console.error('Error making PUT request:', error);
+                    }
+                });
             }
           })
-
+          
           //Camera
-        $('#btnVon').on('click',function(){
+          $('#btnVon').on('click',function(){
             let strState = $(this).attr('data-state');
             Swal.fire({
               html: '<video><source src="videoplayback.mp4" autoplay muted controls></video>', 
@@ -438,19 +544,41 @@
                 $('#video').addClass('bi bi-camera-video');
                 $('#video').removeClass('bi bi-camera-video-off');
                 $('#video').removeClass('text-white');
+                $.ajax({
+                    url: 'https://simplecoop.swollenhippo.com/settings.php',
+                    type: 'PUT',
+                    data: {SessionID:sessionStorage.getItem('SimpleSession'), setting:'lights', value:'on'}, // Convert data to JSON string if sending JSON data
+                    success: function(response) {
+                      response = JSON.parse(response)
+                      console.log(response); // Handle the response from the server
+                    },
+                    error: function(error) {
+                      console.error('Error making PUT request:', error);
+                    }
+                });
             } else {
                 $('#btnVon').attr('data-state','on');
                 $('#video').addClass('bi bi-camera-video-off');
                 $('#video').removeClass('bi bi-camera-video');
                 $('#video').addClass('text-warning');
+                $.ajax({
+                    url: 'https://simplecoop.swollenhippo.com/settings.php',
+                    type: 'PUT',
+                    data: {SessionID:sessionStorage.getItem('SimpleSession'), setting:'lights', value:'off'}, // Convert data to JSON string if sending JSON data
+                    success: function(response) {
+                      response = JSON.parse(response)
+                      console.log(response); // Handle the response from the server
+                    },
+                    error: function(error) {
+                      console.error('Error making PUT request:', error);
+                    }
+                });
             }
           })
-
-
 //
           $('#myRange').on('change',function(){
             let mRange = $('#myRange').val();
-            console.log(mRange)
+            
             if(mRange <= 60){
                 $('#thermometer').addClass('bi-thermometer');
                 $('#thermometer').addClass('text-primary');
@@ -474,6 +602,18 @@
                 $('#thermometer').removeClass('bi bi-thermometer-half');
                 $('#thermometer').removeClass('text-warning');
             }
+            $.ajax({
+                url: 'https://simplecoop.swollenhippo.com/settings.php',
+                type: 'PUT',
+                data: {SessionID:sessionStorage.getItem('SimpleSession'), setting:'temp', value:$('#myRange').val()}, // Convert data to JSON string if sending JSON data
+                success: function(response) {
+                  response = JSON.parse(response)
+                  console.log(response); // Handle the response from the server
+                },
+                error: function(error) {
+                  console.error('Error making PUT request:', error);
+                }
+            });
           })
 
           $('#btnegg').on('click',function(){
@@ -598,6 +738,22 @@
                         sessionStorage.setItem("SimpleSession", sessionResult.SessionID);
                         $('#divLogin').slideToggle();
                         $('#divRegister').slideToggle();
+                        $.post('https://simplecoop.swollenhippo.com/settings.php',{SessionID:sessionStorage.getItem('SimpleSession'), setting:'temp', value:'45'},function(result){
+                          result = JSON.parse(result);
+                          console.log(result);
+                        })
+                        $.post('https://simplecoop.swollenhippo.com/settings.php',{SessionID:sessionStorage.getItem('SimpleSession'), setting:'door', value:'open'},function(result){
+                            result = JSON.parse(result);
+                            console.log(result);
+                        })
+                        $.post('https://simplecoop.swollenhippo.com/settings.php',{SessionID:sessionStorage.getItem('SimpleSession'), setting:'lights', value:'on'},function(result){
+                            result = JSON.parse(result);
+                            console.log(result);
+                        })
+                        $.post('https://simplecoop.swollenhippo.com/settings.php',{SessionID:sessionStorage.getItem('SimpleSession'), setting:'food', value:'on'},function(result){
+                            result = JSON.parse(result);
+                            console.log(result);
+                        })
                       }
                     })
                   }
@@ -606,6 +762,8 @@
             })
           }
         })
+        
+
       </script>
   </body>
 </html>
