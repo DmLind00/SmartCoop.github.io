@@ -1,281 +1,611 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Cicken Coop</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-</head>
-
-<body class="text-primary" style="background-color:black; background:url(peacefulFarm.jpeg)" id="bodyClass">
-    <div class="col-12 col-md-4 offset-md-4 card mt-5" id="divLogin" style="float: center;">
-        <div class="card-body" >
-            <img src="CluckHub.png"   class="col-12 mx-auto" width="auto" height="auto">
-            <form>
-                
-                <label class="form-label">Username:</label>
-                <input id="txtUsername" type="email" class="form-control">
-                <label  class="form-label">Password:</label>
-                <input id="txtPassword" type="text" class="form-control">
-                <button id="btnLogin" type="button" class="btn btn-primary mt-2 col-12">Login</button>
-                <button id="btnRegister" type="button" class="btn btn-warning mt-1 col-12">Register Account</button>
-            </form>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
+  </head>
+  <body class="text-primary" style="background-color:black; background:url(peacefulFarm.jpeg)" id="bodyClass">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary " id="Navbar" style="display: none;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-disabled="false" aria-label="Logout" role="button" id="btnLogoutNav">Logout</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Check us out!</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#"><i class="bi bi-twitter me-2"></i> Twitter</a>
+                <a class="dropdown-item" href="#"><i class="bi bi-reddit"></i> Reddit</a>
+                <a class="dropdown-item" href="#"><i class="bi bi-facebook"></i> Facebook</a>
+                <a class="dropdown-item" href="#"><i class="bi bi-linkedin"></i></i> Linkedin</a>
+                <a class="dropdown-item" href="#"><i class="bi bi-github"></i></i> GitHub</a>
+                <a class="dropdown-item" href="#"><i class="bi bi-instagram"></i></i> Instagram</a>
+              </div>
+            </li>
+          </ul>
         </div>
+      </div>
+    </nav>
+    <div class="col-12 col-md-4 offset-md-4 card mt-5" id="divLogin" style="float: center; ">
+      <div class="card-body">
+        <img src="CluckHub.png" class="col-12 mx-auto" width="auto" height="auto">
+        <form>
+          <input id="txtUsername" type="email" placeholder="Username or Email" class="form-control mt-3">
+          <input id="txtPassword" type="password" placeholder="Password" class="form-control mt-3">
+          <button id="btnLogin" type="button" class="btn btn-success mt-3 col-12">Login</button>
+          <button id="btnRegister" type="button" class="btn btn-warning mt-1 col-12">Register Account</button>
+        </form>
+      </div>
     </div>
-
-    <div class="col-12 col-md-4 offset-md-4 card mt-5" id="divDashboard" style="float: center; display: none">
-        <div class="card-body" >
-            <img src="CluckHub.png"   class="col-12 mx-auto" width="auto" height="auto">
-            
-        </div>
-    </div>
-
-    <section class="testimonial py-5" id="divRegister" style="display: none;" >
-        <div class="container">
-            <div class="row">
-                <div class="col-8 col-md-4 py-1 d-flex justify-content-center align-items-center vh-100 col-12" >
-                    <div>
+    <div class="col-12 col-md-8 offset-md-2 card mt-5" id="divDashboard" style="float: center; background-color: rgb(230, 201, 164); display: none;">
+      <div>
+        <div class="card-body" id="TestRun">
+            <div class="col-12 row" >
+                <div class="col-12 col-md-4">
+                    <div class="card" style="background-color: rgb(77, 127, 110); min-height: 275px; align-items: center;">
+                      <div class="overlay-text" style="color: white;">Temperature Control</div>
+                        <div class="d-flex justify-content-center" style="margin-top: 25%;"> <!-- This is the Thermometer-->
+                            <div class="image-container">
+                              <i class="bi bi-thermometer text-info" style="font-size: 65px;" id="thermometer" aria-label="Egg Icon" ></i>
+                            </div>
+                            <div class="card-body">
+                              <div class="slide-container">
+                                <div class="value-container">
+                                    <span id="demo">45</span>
+                                </div>
+                                <input type="range" min="45" max="89" value="0" class="slider" id="myRange">
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="card" style="background-color: rgb(77, 127, 110); min-height: 275px; text-align: center;">
+                        <div class="overlay-text" style="color: white;">Door Control</div>
                         <div class="card-body">
-                            <img src="CluckHub.png" style="max-width: 100%; margin-bottom: auto; margin-top: auto;">
+                            <div class="d-flex justify-content-center" id="btnDopen">
+                                <button aria-label="Off"type="button" class="btn">
+                                    <i class="bi bi-door-open text-warning" style="font-size: 65px;" id="door" data-state="on"></i>
+                                </button>
+                            </div>
+                            <div class="image-container" id="btnLbOff" style="display: none;">
+                                <button type="button" aria-label="On"class="btn">
+                                    <i class="bi bi-lightbulb-off"></i>
+                                </button>
+                            </div>
+                            <div class="form-check form-switch" style="text-align: center; padding-left: 0px !important;">
+                                <label class="form-check-label" for="flexSwitchCheckDoor" style="color: white;">Automatic Timer</label>
+                                <input class="form-check-label" type="checkbox" role="switch" id="flexSwitchCheckDoor" style="height: auto; width: auto;">
+                            </div>
+                            <div class="form-group row">
+                                <label for="doortime" class="col-sm-6 col-form-label" style="color: white;">Open at:</label>
+                                <div class="col-sm-6">
+                                    <select name="OpenTime" id="DOpen" class="form-control">
+                                        <option value="7am">7:00 AM</option>
+                                        <option value="8am">8:00 AM</option>
+                                        <option value="9am">9:00 AM</option>
+                                        <option value="10am">10:00 AM</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="doortimeclose" class="col-sm-6 col-form-label" style="color: white;">Close at:</label>
+                                <div class="col-sm-6">
+                                    <select name="ClosedTime" id="DClosed" class="form-control">
+                                        <option value="6pm">6:00 PM</option>
+                                        <option value="7pm">7:00 PM</option>
+                                        <option value="8pm">8:00 PM</option>
+                                        <option value="10pm">9:00 PM</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-8 py-5 rounded align-items-center" style="background-color: white;">
-                    <form  class="col-12 col-md-10 col-sm-6">
-                        <h4 class="pb-4 " style="text-align: center; color: black;" for="Register a new account">Register a New Account</h4>
-                        <div class="form-row" style="text-align: justify;">
-                            <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <label  class="form-label" style="margin-right: 5px;">First Name:</label>
-                                <input id="txtFirstName" type="text" placeholder="Enter your first name" class="form-control" style="margin-right: 20px;">
+                    <div class="col-12 col-md-4">
+                      <div class="card" style="background-color: rgb(77, 127, 110); min-height: 275px; text-align: center;">
+                          <div class="overlay-text" style="color: white;">Light Control</div>
+                          <div class="card-body"> <!-- Light-->
+                              <div class="d-flex justify-content-center" id="btnLbOn">
+                                  <button type="button" aria-label="On" class="btn">
+                                      <i class="bi bi-lightbulb text-warning" style="font-size: 65px;" id="light" data-state="on"></i>
+                                  </button>
+                              </div>
+                              <div class="image-container" id="btnLbOn" aria-label="Off" style="display: none;">
+                                  <button type="button" class="btn">
+                                      <i class="bi bi-lightbulb-off"></i>
+                                  </button>
+                              </div>
+                              <div class="form-check form-switch" style="text-align: center; padding-left: 0px !important;">
+                                  <label class="form-check-label" for="flexSwitchCheckDefault" style="color: white;">Automatic Timer</label>
+                                  <input class="form-check-label" type="checkbox" role="switch" id="flexSwitchCheckDefault" style="height: auto; width: auto;">
+                              </div>
+                              <div class="form-group row">
+                                  <label for="lighttime" class="col-sm-6 col-form-label" style="color: white;">Lights on:</label>
+                                  <div class="col-sm-6">
+                                      <select name="OpenTime" id="DOpen" class="form-control">
+                                          <option value="7am">7:00 AM</option>
+                                          <option value="8am">8:00 AM</option>
+                                          <option value="9am">9:00 AM</option>
+                                          <option value="10am">10:00 AM</option>
+                                      </select>
+                                  </div>
+                              </div>
+                              <div class="form-group row">
+                                  <label for="lightsoff" class="col-sm-6 col-form-label" style="color: white;">Light Off:</label>
+                                  <div class="col-sm-6">
+                                      <select name="ClosedTime" id="DClosed" class="form-control">
+                                          <option value="6pm">6:00 PM</option>
+                                          <option value="7pm">7:00 PM</option>
+                                          <option value="8pm">8:00 PM</option>
+                                          <option value="10pm">9:00 PM</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="col-12 row">
+                  <div class="col-12 col-md-4">
+                      <div class="card mt-5" style="background-color: rgb(77, 127, 110); min-height: 275px;">
+                          <div class="card-body"> <!-- This is the Egg Counter-->
+                              <div class="overlay-text" style="color: white;">Egg Counter</div>
+                              <div class="image-container d-flex justify-content-center align-items-center">
+                                  <div class="text-center">
+                                      <i class="bi bi-egg-fill text-white" arialabel="Egg Icon" style="font-size: 65px;" id="egg"></i>
+                                  </div>
+                                  <div>
+                                      <label type="text">Current Egg Count</label>
+                                      <input id="eggnumber" class="form-control" type="number" value="50">
+                                      <label type="text">New Eggs Laid</label>
+                                      <input id="eggupdate" class="form-control" type="number">
+                                      <button id="btnegg" aria-label="Add eggs Laid"class="btn btn-warning mt-1">Add Eggs Laid</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-12 col-md-4 mt-5">
+                    <div class="card" style="background-color: rgb(77, 127, 110); min-height: 275px; text-align: center;">
+                        <div class="card-body">
+                            <div class="overlay-text" style="color: white;">Feed</div>
+                            <div class="d-flex justify-content-center" id="btnFeed">
+                                <button type="button" aria-label="On" class="btn">
+                                    <i class="bi bi-bag text-warning" style="font-size: 65px;" id="feed" data-state="on"></i>
+                                </button>
                             </div>
-                            <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <label  class="form-label" style="margin-right: 5px;">Last Name:</label>
-                                <input id="txtLastName" type="text" placeholder="Enter your last name" class="form-control" style="margin-right: 20px;">
+                            <div class="image-container" id="btnFeed" style="display: none; align-items: center;">
+                                <button type="button" aria-label="Off" class="btn">
+                                    <i class="bi bi-bag-x"></i>
+                                </button>
                             </div>
-                            <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <label  type="email" class="form-label" style="margin-right: 5px;">Email:</label>
-                                <input id="txtEmail" type="email" placeholder="Enter your email" class="form-control">
+                            <div class="form-check form-switch " style="align-items: center;padding-left: 0px !important;">
+                                <label for="Feedtim" style="color: white;">Automatic feeding:</label>
+                                <input class="form-check-label" type="checkbox" role="switch" id="flexSwitchCheckFeed">
+                                <div class="form-group row">
+                                    <label for="Feedtime" class="col-sm-6 col-form-label" style="color: white;">Feed at:</label>
+                                    <div class="col-sm-6">
+                                        <select name="FeedTime" id="FeedTime" class="form-control">
+                                            <option value="7am">7:00 AM</option>
+                                            <option value="8am">8:00 AM</option>
+                                            <option value="9am">9:00 AM</option>
+                                            <option value="10am">10:00 AM</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="input-group  mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <label  type="text" class="form-label" style="margin-right: 5px;">Password:</label>
-                                <input id="txtPword" type="password" placeholder="Create a password" class="form-control" style="margin-right: 20px;">
+                        </div>
+                    </div>
+                  </div>
+                      <div class="col-12 col-md-4">
+                        <div class="card mt-5" style="background-color: rgb(77, 127, 110); min-height: 275px; align-items: center;">
+                            <div class="card-body">
+                              <div class="overlay-text" style="color: white;">Live Video</div>
+                                <div class="d-flex justify-content-center" style="margin-top: 25%;" id="btnVon"> <!-- This Video Camera settings -->
+                                    <button type="button" aria-label="Video On" class="btn col-12 text-center">
+                                        <i class="bi bi-camera-video-off text-warning" style="font-size: 65px;" id="video" data-state="on"></i>
+                                    </button>
+                                </div>
+                                <div class="image-container" id="btnVon" style="display: none;">
+                                    <button type="button"  aria-label="Video Off" class="btn">
+                                        <i class="bi bi-camera-video"></i>
+                                    </button>
+                                </div>
+                              </div>
                             </div>
-                            <div class="input-group  mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <label type="text" class="form-label" style="margin-right: 5px;">Confirm Password:</label>
-                                <input id="txtPwordCnf" type="password" placeholder="Retype Password" class="form-control">
-                            </div>
-                            <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <label type="text" class="form-label" style="margin-right: 5px;">Street Address 1:</label>
-                                <input id="txtStAddress1" type="text" placeholder="Enter Street Address 1" class="form-control" style="margin-right: 20px;">
-                            </div>
-                            <div class="input-group  mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <label type="text" class="form-label" style="margin-right: 5px;">Street Address 2:</label>
-                                <input id="txtStAddress2" type="text" placeholder="Enter Street Address 2" class=" form-control">
-                            </div>
-                            <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <label type="text" class="form-label" style="width: fit-content; margin-right: 5px;">City:</label>
-                                <input id="txtCity" type="text" placeholder="Enter your city" class="form-control" style="margin-right: 20px;">
-                            </div>
-                            <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <span class="input-group-addon" style="width: fit-content;"></span>
-                                <label type="text" class="form-label" style="width: fit-content; margin-right: 5px; ">State:</label>
-                                <input id="txtState" type="text" placeholder="Enter your State" class="form-control" style="margin-right: 20px;">
-                            </div>
-                            <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <label type="number" class="form-label" style="width: fit-content; margin-right: 5px;">Zip:</label>
-                                <input id="txtZip" type="number" placeholder="Enter your Zip" class="form-control">
-                            </div>
-                            <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <label type="number" class="form-label" style="width: fit-content; margin-right: 5px;">Phone:</label>
-                                <input  id="txtPhone" type="number" placeholder="Enter your Phone Number" class="form-control">
-                            </div>
-                            <div class="input-group mb-3 center" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
-                                <label type="number" class="form-label" style="width: fit-content; margin-right: 5px;">Coop Registration ID:</label>
-                                <input  id="txtCoopID" type="number" placeholder="Create a Unique ID"class="form-control">
-                            </div>
-                            <div class="container mb-3" style="text-align: center;">
-                                <button id="btnComplete" type="button" class="btn btn-warning" aria-label="Create Account">Create Account</button>
-                            </div>
-                            <div class="container mb-3" style="text-align: center; color: black;">
-                                <footer style="text-align: center;">
-                                    <p>Already have an account? Click here:<button id="btnReturn" type="button" class="btn btn-danger" style="background: none!important;
+                        </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+    </div>
+</div>
+    <section class="testimonial py-5" id="divRegister" style="display: none;">
+      <div class="container">
+        <div class="row">
+          <div class="col-8 col-md-4 py-1 d-flex justify-content-center align-items-center vh-100 col-12">
+            <div>
+              <div class="card-body">
+                <img src="CluckHub.png" style="max-width: 100%; margin-bottom: auto; margin-top: auto;">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 py-5 rounded align-items-center" style="background-color: white;">
+            <form class="col-12 col-md-10 col-sm-6">
+              <h4 class="pb-4 " style="text-align: center; color: black;" for="Register a new account">Register a New Account</h4>
+              <div class="form-row" style="text-align: justify;">
+                <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <label class="form-label" style="margin-right: 5px;">First Name:</label>
+                  <input id="txtFirstName" type="text" placeholder="Enter your first name" class="form-control" style="margin-right: 20px;">
+                </div>
+                <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <label class="form-label" style="margin-right: 5px;">Last Name:</label>
+                  <input id="txtLastName" type="text" placeholder="Enter your last name" class="form-control" style="margin-right: 20px;">
+                </div>
+                <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <label type="email" class="form-label" style="margin-right: 5px;">Email:</label>
+                  <input id="txtEmail" type="email" placeholder="Enter your email" class="form-control">
+                </div>
+                <div class="input-group  mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <label type="text" class="form-label" style="margin-right: 5px;">Password:</label>
+                  <input id="txtPword" type="password" placeholder="Create a password" class="form-control" style="margin-right: 20px;">
+                </div>
+                <div class="input-group  mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <label type="text" class="form-label" style="margin-right: 5px;">Confirm Password:</label>
+                  <input id="txtPwordCnf" type="password" placeholder="Retype Password" class="form-control">
+                </div>
+                <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <label type="text" class="form-label" style="margin-right: 5px;">Street Address 1:</label>
+                  <input id="txtStAddress1" type="text" placeholder="Enter Street Address 1" class="form-control" style="margin-right: 20px;">
+                </div>
+                <div class="input-group  mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <label type="text" class="form-label" style="margin-right: 5px;">Street Address 2:</label>
+                  <input id="txtStAddress2" type="text" placeholder="Enter Street Address 2" class=" form-control">
+                </div>
+                <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <label type="text" class="form-label" style="width: fit-content; margin-right: 5px;">City:</label>
+                  <input id="txtCity" type="text" placeholder="Enter your city" class="form-control" style="margin-right: 20px;">
+                </div>
+                <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <span class="input-group-addon" style="width: fit-content;"></span>
+                  <label type="text" class="form-label" style="width: fit-content; margin-right: 5px; ">State:</label>
+                  <input id="txtState" type="text" placeholder="Enter your State" class="form-control" style="margin-right: 20px;">
+                </div>
+                <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <label type="number" class="form-label" style="width: fit-content; margin-right: 5px;">Zip:</label>
+                  <input id="txtZip" type="number" placeholder="Enter your Zip" class="form-control">
+                </div>
+                <div class="input-group mb-3" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <label type="number" class="form-label" style="width: fit-content; margin-right: 5px;">Phone:</label>
+                  <input id="txtPhone" type="number" placeholder="Enter your Phone Number" class="form-control">
+                </div>
+                <div class="input-group mb-3 center" style="width: fit-content; margin-left: auto; margin-right: auto; color: black;">
+                  <label type="number" class="form-label" style="width: fit-content; margin-right: 5px;">Coop Registration ID:</label>
+                  <input id="txtCoopID" type="number" placeholder="Create a Unique ID" class="form-control">
+                </div>
+                <div class="container mb-3" style="text-align: center;">
+                  <button id="btnComplete" type="button" class="btn btn-warning" aria-label="Create Account">Create Account</button>
+                </div>
+                <div class="container mb-3" style="text-align: center; color: black;">
+                  <footer style="text-align: center;">
+                    <p>Already have an account? Click here: <button id="btnReturn" type="button" class="btn btn-danger" style="background: none!important;
                                         border: none;
                                         padding: 0!important;
                                         font-family: poppins, sans-serif;
                                         color: blue;
                                         text-decoration: underline;
-                                        cursor: pointer;">Sign in</button></p>
-                                  </footer>
-                            </div>
-                    </form>
+                                        cursor: pointer;">Sign in</button>
+                    </p>
+                  </footer>
                 </div>
-            </div>
+            </form>
+          </div>
         </div>
-    </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        $('#btnRegister').on('click', function () {
-            $('#divLogin').slideUp(function () {
-                $('#divRegister').slideDown();
-            });
+      </div>
+      </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script>
+        $('#myRange').on('change', function(){
+            let mRange = $('#myRange').val();
+            $('#demo').text(mRange)
         })
-
-        $('#btnReturn').on('click', function () { 
-            $('#divRegister').slideUp(function () {
-                $('#divLogin').slideDown();
+        $('#btnRegister').on('click', function() {
+          $('#divLogin').slideUp(function() {
+            $('#divRegister').slideDown();
+          });
+        })
+        $('#btnReturn').on('click', function() {
+          $('#divRegister').slideUp(function() {
+            $('#divLogin').slideDown();
+          })
+        })
+        $('#btnLogin').on('click', function() {
+          let strtxtUsername = $('#txtUsername').val();
+          let strtxtPassword = $('#txtPassword').val()
+          let blnErrorFnd = false;
+          let strErrorMsg = '';
+          if (strtxtUsername == "") {
+            blnErrorFnd = true;
+            strErrorMsg += "  Please input your Username, "
+          }
+          if (strtxtPassword == "") {
+            blnErrorFnd = true;
+            strErrorMsg += "  Please input your Password "
+          }
+          if (blnErrorFnd == true) {
+            blnErrorFnd = false;
+            Swal.fire({
+              icon: "error",
+              html: strErrorMsg
             })
-        })
-
-        $('#btnLogin').on('click', function () {
-            let strtxtUsername =$('#txtUsername').val();
-            let strtxtPassword =$('#txtPassword').val()
-            let blnErrorFnd = false;
-            let strErrorMsg = '';
-            if(strtxtUsername == ""){
-                blnErrorFnd = true;
-                strErrorMsg += "<p>Please input your Username</p>"
-            }
-            if(strtxtPassword == ""){
-                blnErrorFnd = true;
-                strErrorMsg += "<p>Please input your Password</p>"
-            }
-            if(blnErrorFnd == true){
-                blnErrorFnd = false;
-                Swal.fire({
-                    icon: "error",
-                    html: strErrorMsg    
-                })
-            } else {
-                $.post('https://simplecoop.swollenhippo.com/sessions.php',{Email:strtxtUsername,Password:strtxtPassword},function(sessionResult){
-                    sessionResult = JSON.parse(sessionResult);
-                    if(sessionResult.Error){
-                        alert('error') 
-                    } else {
-                        sessionStorage.setItem("SimpleSession",sessionResult.SessionID);
-                        $('#divDashboard').slideToggle();
-                        $('#divLogin').slideToggle();
-                    }
-                })
-                    
-            }
+          } else {
+            $.post('https://simplecoop.swollenhippo.com/sessions.php', {
+              Email: strtxtUsername,
+              Password: strtxtPassword
+            }, function(sessionResult) {
+              sessionResult = JSON.parse(sessionResult);
+              if (sessionResult.Error) {
+                alert('error')
+              } else {
+                sessionStorage.setItem("SimpleSession", sessionResult.SessionID);
+                $('#divDashboard').slideToggle();
+                $('#divLogin').slideToggle();
+                $('#Navbar').slideDown();
+              }
+            })
+          }
         });
-        
-        $('#btnComplete').on('click', function () {
-            let strtxtFirstName =$('#txtFirstName').val();
-            let strtxtLastName =$('#txtLastName').val();
-            let strtxtEmail =$('#txtEmail').val();
-            let strtxtPword =$('#txtPword').val();
-            let strtxtPwordCnf =$('#txtPwordCnf').val();
-            let strtxtStAddress1 =$('#txtStAddress1').val();
-            let strtxtStAddress2 =$('#txtStAddress2').val();
-            let strtxtCity =$('#txtCity').val();
-            let strtxtState =$('#txtState').val();
-            let strtxtZip =$('#txtZip').val();
-            let strtxtPhone =$('#txtPhone').val();
-            let strtxtCoopID=$('#txtCoopID').val();
-            let blnErrorFound = false;
-            let strErrorMessage = '';
-            if(strtxtFirstName == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please input a First Name</p>"
+        $('#btnLogoutNav').on('click',function(){
+          console.log ("LogoutClick")
+          $('#divDashboard').slideUp();
+          $('#Navbar').slideUp();
+          $('#divLogin').slideDown();
+        })
+        //click events for dashboard
+        $('#btnLbOn').on('click',function(){
+            let strState = $(this).attr('data-state');
+            if(strState == 'on'){
+                $('#btnLbOn').attr('data-state','off');
+                $('#light').addClass('bi-lightbulb-off');
+                $('#light').removeClass('bi-lightbulb');
+                $('#light').removeClass('text-warning');
+            } else {
+                $('#btnLbOn').attr('data-state','on');
+                $('#light').addClass('bi-lightbulb');
+                $('#light').removeClass('bi-lightbulb-off');
+                $('#light').addClass('text-warning');
             }
-            if(strtxtLastName == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please input a Last Name</p>"
+            
+        })
+        //Door
+        $('#btnDopen').on('click',function(){
+            let strState = $(this).attr('data-state');
+            if(strState == 'on'){
+                $('#btnDopen').attr('data-state','off');
+                $('#door').addClass('bi bi-door-closed');
+                $('#door').removeClass('bi bi-door-open');
+                $('#door').removeClass('text-warning');
+            } else {
+                $('#btnDopen').attr('data-state','on');
+                $('#door').addClass('bi bi-door-open');
+                $('#door').removeClass('bi bi-door-closed');
+                $('#door').addClass('text-warning');
             }
-            if(strtxtEmail == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please input a Email</p>"
+          })
+
+          //Feed
+        $('#btnFeed').on('click',function(){
+            let strState = $(this).attr('data-state');
+            if(strState == 'on'){
+                $('#btnFeed').attr('data-state','off');
+                $('#feed').addClass('bi bi-bag-x');
+                $('#feed').removeClass('bi bi-bag');
+                $('#feed').removeClass('text-warning');
+            } else {
+                $('#btnFeed').attr('data-state','on');
+                $('#feed').addClass('bi bi-bag');
+                $('#feed').removeClass('bi bi-bag-x');
+                $('#feed').addClass('text-warning');
             }
-            if(strtxtPword == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please input a Password</p>"
+          })
+
+          //Camera
+        $('#btnVon').on('click',function(){
+            let strState = $(this).attr('data-state');
+            Swal.fire({
+              html: '<video><source src="videoplayback.mp4" autoplay muted controls></video>', 
+              customClass: {
+                popup: 'WideModal', // Apply the custom style to the modal
+            },
+            })
+            if(strState == 'on'){
+                $('#btnVon').attr('data-state','off');
+                $('#video').addClass('bi bi-camera-video');
+                $('#video').removeClass('bi bi-camera-video-off');
+                $('#video').removeClass('text-white');
+            } else {
+                $('#btnVon').attr('data-state','on');
+                $('#video').addClass('bi bi-camera-video-off');
+                $('#video').removeClass('bi bi-camera-video');
+                $('#video').addClass('text-warning');
             }
-            if(strtxtPwordCnf == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please Confirm Password</p>"
-            }
-            if(strtxtStAddress1 == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please Enter your Street Address</p>"
-            }
-            if(strtxtStAddress2 == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please Enter a second Street Address</p>"
-            }
-            if(strtxtCity == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please Enter your City</p>"
-            }
-            if(strtxtState == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please Enter your State</p>"
-            }
-            if(strtxtZip == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please Enter your Zip</p>"
-            }
-            if(strtxtPhone == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please Enter your Phone Number</p>"
-            }
-            if(strtxtCoopID == ""){
-                blnErrorFound = true;
-                strErrorMessage += "<p>Please Enter a Coop ID</p>"
-            }
-            if(blnErrorFound == true){
-                blnErrorFound = false;
-                Swal.fire({
-                icon: "error",
-                html: strErrorMessage
-                })
+          })
+
+
+//
+          $('#myRange').on('change',function(){
+            let mRange = $('#myRange').val();
+            console.log(mRange)
+            if(mRange <= 60){
+                $('#thermometer').addClass('bi-thermometer');
+                $('#thermometer').addClass('text-primary');
+                $('#thermometer').removeClass('bi bi-thermometer-half');
+                $('#thermometer').removeClass('text-warning');
+                $('#thermometer').removeClass('bi bi-thermometer-high');
+                $('#thermometer').removeClass('text-danger');
+            } else if(mRange >= 61 && mRange <=75){
+                $('#thermometer').addClass('bi bi-thermometer-half');
+                $('#thermometer').addClass('text-warning');
+                $('#thermometer').removeClass('bi-thermometer');
+                $('#thermometer').removeClass('text-primary');
+                $('#thermometer').removeClass('bi bi-thermometer-high');
+                $('#thermometer').removeClass('text-danger');
 
             } else {
-                $.post('https://simplecoop.swollenhippo.com/users.php',{Email: strtxtEmail, Password: strtxtPword, FirstName: strtxtFirstName, LastName: strtxtLastName, CoopID: strtxtCoopID},function(result){
-                    result = JSON.parse(result);
-                    if(result.Error){
-                        Swal.fire({
-                            icon: 'danger',
-                            html:result.error
-                        })
-                        
-                    } else {
-                        $.post('https://simplecoop.swollenhippo.com/useraddress.php',{Email: strtxtEmail, Street1: strtxtStAddress1, Street2: strtxtStAddress2, City: strtxtCity, State: strtxtState, ZIP: strtxtZip},function(result){
-                            result = JSON.parse(result);
-                            if(result.Error){
-                                Swal.fire({
-                                    icon: 'danger',
-                                    html:result.error
-                                })
-                            }else{
-                                $.post('https://simplecoop.swollenhippo.com/sessions.php',{Email: strtxtEmail, Password: strtxtPword},function(sessionResult){
-                                    sessionResult = JSON.parse(sessionResult);
-                                    if(sessionResult.Error){
-                                            Swal.fire({
-                                                icon: 'danger',
-                                                html:result.error
-                                            })
-                                    } else {
-                                            sessionStorage.setItem("SimpleSession",sessionResult.SessionID);
-                                            $('#divLogin').slideToggle();
-                                            $('#divRegister').slideToggle();
-                                    }
-                                
-                                })
-                            }
-                        })
-                    }
-            
-                })
+                $('#thermometer').addClass('bi bi-thermometer-high');
+                $('#thermometer').addClass('text-danger');
+                $('#thermometer').removeClass('bi-thermometer');
+                $('#thermometer').removeClass('text-primary');
+                $('#thermometer').removeClass('bi bi-thermometer-half');
+                $('#thermometer').removeClass('text-warning');
             }
+          })
+
+          $('#btnegg').on('click',function(){
+            let intCurrent = $('#eggnumber').val() * 1;
+            let intAdd = $('#eggupdate').val() * 1;
+            let intTotal = intCurrent + intAdd;
+            $('#eggnumber').val(intTotal);
+            $('#eggupdate').val('');
+})
+
+        //End click events
+        $('#btnComplete').on('click', function() {
+          let strtxtFirstName = $('#txtFirstName').val();
+          let strtxtLastName = $('#txtLastName').val();
+          let strtxtEmail = $('#txtEmail').val();
+          let strtxtPword = $('#txtPword').val();
+          let strtxtPwordCnf = $('#txtPwordCnf').val();
+          let strtxtStAddress1 = $('#txtStAddress1').val();
+          let strtxtStAddress2 = $('#txtStAddress2').val();
+          let strtxtCity = $('#txtCity').val();
+          let strtxtState = $('#txtState').val();
+          let strtxtZip = $('#txtZip').val();
+          let strtxtPhone = $('#txtPhone').val();
+          let strtxtCoopID = $('#txtCoopID').val();
+          let blnErrorFound = false;
+          let strErrorMessage = '';
+          if (strtxtFirstName == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please input a First Name < /p>"
+          }
+          if (strtxtLastName == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please input a Last Name < /p>"
+          }
+          if (strtxtEmail == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please input a Email < /p>"
+          }
+          if (strtxtPword == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please input a Password < /p>"
+          }
+          if (strtxtPwordCnf == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please Confirm Password < /p>"
+          }
+          if (strtxtStAddress1 == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please Enter your Street Address < /p>"
+          }
+          if (strtxtStAddress2 == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please Enter a second Street Address < /p>"
+          }
+          if (strtxtCity == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please Enter your City < /p>"
+          }
+          if (strtxtState == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please Enter your State < /p>"
+          }
+          if (strtxtZip == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please Enter your Zip < /p>"
+          }
+          if (strtxtPhone == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please Enter your Phone Number < /p>"
+          }
+          if (strtxtCoopID == "") {
+            blnErrorFound = true;
+            strErrorMessage += " < p > Please Enter a Coop ID < /p>"
+          }
+          if (blnErrorFound == true) {
+            blnErrorFound = false;
+            Swal.fire({
+              icon: "error",
+              html: strErrorMessage
+            })
+          } else {
+            $.post('https://simplecoop.swollenhippo.com/users.php', {
+              Email: strtxtEmail,
+              Password: strtxtPword,
+              FirstName: strtxtFirstName,
+              LastName: strtxtLastName,
+              CoopID: strtxtCoopID
+            }, function(result) {
+              result = JSON.parse(result);
+              if (result.Error) {
+                Swal.fire({
+                  icon: 'danger',
+                  html: result.error
+                })
+              } else {
+                $.post('https://simplecoop.swollenhippo.com/useraddress.php', {
+                  Email: strtxtEmail,
+                  Street1: strtxtStAddress1,
+                  Street2: strtxtStAddress2,
+                  City: strtxtCity,
+                  State: strtxtState,
+                  ZIP: strtxtZip
+                }, function(result) {
+                  result = JSON.parse(result);
+                  if (result.Error) {
+                    Swal.fire({
+                      icon: 'danger',
+                      html: result.error
+                    })
+                  } else {
+                    $.post('https://simplecoop.swollenhippo.com/sessions.php', {
+                      Email: strtxtEmail,
+                      Password: strtxtPword
+                    }, function(sessionResult) {
+                      sessionResult = JSON.parse(sessionResult);
+                      if (sessionResult.Error) {
+                        Swal.fire({
+                          icon: 'danger',
+                          html: result.error
+                        })
+                      } else {
+                        sessionStorage.setItem("SimpleSession", sessionResult.SessionID);
+                        $('#divLogin').slideToggle();
+                        $('#divRegister').slideToggle();
+                      }
+                    })
+                  }
+                })
+              }
+            })
+          }
         })
-</script>
-</body>
+      </script>
+  </body>
 </html>
