@@ -56,12 +56,8 @@ label, input, button {
 
 }
 
-#blocks-item{
-    border border-color: #6b8dff;
-    
-}
 
-.WideModal{
-    width: 100% !important;
+.WithModal {
+    width:850px !important;
 }
 

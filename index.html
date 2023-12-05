@@ -20,16 +20,17 @@
               <a class="nav-link disabled" aria-disabled="true" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-disabled="false" role="button" id="btnLogoutNav">Logout</a>
+              <a class="nav-link" aria-disabled="false" aria-label="Logout" role="button" id="btnLogoutNav">Logout</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Check us out!</a>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="#"><i class="bi bi-twitter me-2"></i>Twitter</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
+                <a class="dropdown-item" href="#"><i class="bi bi-twitter me-2"></i> Twitter</a>
+                <a class="dropdown-item" href="#"><i class="bi bi-reddit"></i> Reddit</a>
+                <a class="dropdown-item" href="#"><i class="bi bi-facebook"></i> Facebook</a>
+                <a class="dropdown-item" href="#"><i class="bi bi-linkedin"></i></i> Linkedin</a>
+                <a class="dropdown-item" href="#"><i class="bi bi-github"></i></i> GitHub</a>
+                <a class="dropdown-item" href="#"><i class="bi bi-instagram"></i></i> Instagram</a>
               </div>
             </li>
           </ul>
@@ -52,148 +53,173 @@
         <div class="card-body" id="TestRun">
             <div class="col-12 row" >
                 <div class="col-12 col-md-4">
-                    <div class="card" style="background-color: rgb(77, 127, 110); min-height: 275px;">
-                        <div class="card-body"> <!-- This is the Thermometer-->
-                          <div class="overlay-text" style="color: white;">Temperature Control</div>
+                    <div class="card" style="background-color: rgb(77, 127, 110); min-height: 275px; align-items: center;">
+                      <div class="overlay-text" style="color: white;">Temperature Control</div>
+                        <div class="d-flex justify-content-center" style="margin-top: 25%;"> <!-- This is the Thermometer-->
                             <div class="image-container">
-                              <i class="bi bi-thermometer text-info" style="font-size: 65px;" id="thermometer"></i>
-                                <div class="slide-container">
-                                    <div class="value-container">
-                                        <span id="demo">45</span>
-                                    </div>
-                                    <input type="range" min="45" max="89" value="0" class="slider" id="myRange">
+                              <i class="bi bi-thermometer text-info" style="font-size: 65px;" id="thermometer" aria-label="Egg Icon" ></i>
+                            </div>
+                            <div class="card-body">
+                              <div class="slide-container">
+                                <div class="value-container">
+                                    <span id="demo">45</span>
+                                </div>
+                                <input type="range" min="45" max="89" value="0" class="slider" id="myRange">
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="card" style="background-color: rgb(77, 127, 110); min-height: 275px; text-align: center;">
+                        <div class="overlay-text" style="color: white;">Door Control</div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center" id="btnDopen">
+                                <button aria-label="Off"type="button" class="btn">
+                                    <i class="bi bi-door-open text-warning" style="font-size: 65px;" id="door" data-state="on"></i>
+                                </button>
+                            </div>
+                            <div class="image-container" id="btnLbOff" style="display: none;">
+                                <button type="button" aria-label="On"class="btn">
+                                    <i class="bi bi-lightbulb-off"></i>
+                                </button>
+                            </div>
+                            <div class="form-check form-switch" style="text-align: center; padding-left: 0px !important;">
+                                <label class="form-check-label" for="flexSwitchCheckDoor" style="color: white;">Automatic Timer</label>
+                                <input class="form-check-label" type="checkbox" role="switch" id="flexSwitchCheckDoor" style="height: auto; width: auto;">
+                            </div>
+                            <div class="form-group row">
+                                <label for="doortime" class="col-sm-6 col-form-label" style="color: white;">Open at:</label>
+                                <div class="col-sm-6">
+                                    <select name="OpenTime" id="DOpen" class="form-control">
+                                        <option value="7am">7:00 AM</option>
+                                        <option value="8am">8:00 AM</option>
+                                        <option value="9am">9:00 AM</option>
+                                        <option value="10am">10:00 AM</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="doortimeclose" class="col-sm-6 col-form-label" style="color: white;">Close at:</label>
+                                <div class="col-sm-6">
+                                    <select name="ClosedTime" id="DClosed" class="form-control">
+                                        <option value="6pm">6:00 PM</option>
+                                        <option value="7pm">7:00 PM</option>
+                                        <option value="8pm">8:00 PM</option>
+                                        <option value="10pm">9:00 PM</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
-                    <div class="card" style="background-color: rgb(77, 127, 110); min-height: 275px;">
-                        <div class="card-body" style="align-items: center; "> <!-- This is the Door Needs aligning-->
-                          <div class="overlay-text" style="color: white;">Door Control</div>
-                          <div class="image-container" id="btnDopen">
-                            <button type="button" class="btn">
-                                <i class="bi bi-door-open text-warning" style="font-size: 65px; " id="door" data-state="on"></i>
-                            </button>
-                          </div>
-                          <div class="image-container" id="btnLbOff" style="display: none;">
-                            <button type="button" class="btn">
-                                <i class="bi bi-lightbulb-off"></i>
-                            </button>
-                          </div>
-                                <div class="form-check form-switch" style="text-align: center; padding-left: 0px !important;">
-                                  <label class="form-check-label" for="flexSwitchCheckDefault" style="color: white;">Automatic Timer</label>
-                                  <input class="form-check-label" type="checkbox" role="switch" id="flexSwitchCheckDefault" style="height: auto; width: auto;">
-                                  <label for="doortime" style="color: white;">Choose an opening time:</label> 
-                                    <select name="OpenTime" id="DOpen"> 
-                                        <option value="7am">7:00 AM</option> 
-                                        <option value="8am">8:00 AM</option> 
-                                        <option value="9am">9:00 AM</option> 
-                                        <option value="10am">10:00 AM</option> 
-                                    </select>
-                                    <label for="doortimeclose" style="color: white;">Choose a closing time:</label> 
-                                    <select name="ClosedTime" id="DClosed"> 
-                                        <option value="6pm">6:00 PM</option> 
-                                        <option value="7pm">7:00 PM</option> 
-                                        <option value="8pm">8:00 PM</option> 
-                                        <option value="10pm">9:00 PM</option> 
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                      <div class="card" style="background-color: rgb(77, 127, 110); min-height: 275px;">
-                          <div class="card-body" style="align-items: center;">
-                            <div class="overlay-text" style="color: white;">Light Control</div>
-                              <div class="image-container" id="btnLbOn"> <!-- This is the light -->
-                                  <button type="button" class="btn">
+                    <div class="col-12 col-md-4">
+                      <div class="card" style="background-color: rgb(77, 127, 110); min-height: 275px; text-align: center;">
+                          <div class="overlay-text" style="color: white;">Light Control</div>
+                          <div class="card-body"> <!-- Light-->
+                              <div class="d-flex justify-content-center" id="btnLbOn">
+                                  <button type="button" aria-label="On" class="btn">
                                       <i class="bi bi-lightbulb text-warning" style="font-size: 65px;" id="light" data-state="on"></i>
                                   </button>
                               </div>
-                              <div class="image-container" id="btnLbOff" style="display: none;">
+                              <div class="image-container" id="btnLbOn" aria-label="Off" style="display: none;">
                                   <button type="button" class="btn">
                                       <i class="bi bi-lightbulb-off"></i>
                                   </button>
                               </div>
                               <div class="form-check form-switch" style="text-align: center; padding-left: 0px !important;">
-                                <label class="form-check-label" for="flexSwitchCheckDefault" style="color: white;">Automatic Timer</label>
-                                <input class="form-check-label" type="checkbox" role="switch" id="flexSwitchCheckDefault" style="height: auto; width: auto;">
-                                <label for="lighttime" style="color: white;">Light On:</label> 
-                                  <select name="OpenTime" id="DOpen"> 
-                                      <option value="7am">7:00 AM</option> 
-                                      <option value="8am">8:00 AM</option> 
-                                      <option value="9am">9:00 AM</option> 
-                                      <option value="10am">10:00 AM</option> 
-                                  </select>
-                                  <label for="lightsoff" style="color: white;">Light Off:</label> 
-                                  <select name="ClosedTime" id="DClosed"> 
-                                      <option value="6pm">6:00 PM</option> 
-                                      <option value="7pm">7:00 PM</option> 
-                                      <option value="8pm">8:00 PM</option> 
-                                      <option value="10pm">9:00 PM</option> 
-                                  </select>
+                                  <label class="form-check-label" for="flexSwitchCheckDefault" style="color: white;">Automatic Timer</label>
+                                  <input class="form-check-label" type="checkbox" role="switch" id="flexSwitchCheckDefault" style="height: auto; width: auto;">
+                              </div>
+                              <div class="form-group row">
+                                  <label for="lighttime" class="col-sm-6 col-form-label" style="color: white;">Lights on:</label>
+                                  <div class="col-sm-6">
+                                      <select name="OpenTime" id="DOpen" class="form-control">
+                                          <option value="7am">7:00 AM</option>
+                                          <option value="8am">8:00 AM</option>
+                                          <option value="9am">9:00 AM</option>
+                                          <option value="10am">10:00 AM</option>
+                                      </select>
+                                  </div>
+                              </div>
+                              <div class="form-group row">
+                                  <label for="lightsoff" class="col-sm-6 col-form-label" style="color: white;">Light Off:</label>
+                                  <div class="col-sm-6">
+                                      <select name="ClosedTime" id="DClosed" class="form-control">
+                                          <option value="6pm">6:00 PM</option>
+                                          <option value="7pm">7:00 PM</option>
+                                          <option value="8pm">8:00 PM</option>
+                                          <option value="10pm">9:00 PM</option>
+                                      </select>
+                                  </div>
                               </div>
                           </div>
                       </div>
                   </div>
                 </div>
-                <div class="col-12 row" >
-                  <div class="col-4">
+                <div class="col-12 row">
+                  <div class="col-12 col-md-4">
                       <div class="card mt-5" style="background-color: rgb(77, 127, 110); min-height: 275px;">
                           <div class="card-body"> <!-- This is the Egg Counter-->
-                            <div class="overlay-text" style="color: white;">Egg Counter</div>
-                              <div class="image-container">
-                                <i class="bi bi-egg-fill text-white" style="font-size: 65px;" id="egg"></i>
+                              <div class="overlay-text" style="color: white;">Egg Counter</div>
+                              <div class="image-container d-flex justify-content-center align-items-center">
+                                  <div class="text-center">
+                                      <i class="bi bi-egg-fill text-white" arialabel="Egg Icon" style="font-size: 65px;" id="egg"></i>
+                                  </div>
                                   <div>
-                                    <label type="text">Current Egg Count</label>
-                                    <input id="eggnumber" class="form-control" type="number" value="50">
-                                    <label type="text">New Eggs Laid</label>
-                                    <input id="eggupdate" class="form-control" type="number">
-                                    <button id="btnegg" class="btn btn-warning mt-1">Add Eggs Laid</button>
+                                      <label type="text">Current Egg Count</label>
+                                      <input id="eggnumber" class="form-control" type="number" value="50">
+                                      <label type="text">New Eggs Laid</label>
+                                      <input id="eggupdate" class="form-control" type="number">
+                                      <button id="btnegg" aria-label="Add eggs Laid"class="btn btn-warning mt-1">Add Eggs Laid</button>
                                   </div>
                               </div>
                           </div>
                       </div>
                   </div>
-                  <div class="col-4">
-                      <div class="card mt-5" style="background-color: rgb(77, 127, 110); min-height: 275px;">
-                          <div class="card-body"> <!-- This is the feed -->
+                  <div class="col-12 col-md-4 mt-5">
+                    <div class="card" style="background-color: rgb(77, 127, 110); min-height: 275px; text-align: center;">
+                        <div class="card-body">
                             <div class="overlay-text" style="color: white;">Feed</div>
-                            <div class="image-container" id="btnFeed">
-                              <button type="button" class="btn">
-                                  <i class="bi bi-bag text-warning" style="font-size: 65px;" id="feed" data-state="on"></i>
-                              </button>
+                            <div class="d-flex justify-content-center" id="btnFeed">
+                                <button type="button" aria-label="On" class="btn">
+                                    <i class="bi bi-bag text-warning" style="font-size: 65px;" id="feed" data-state="on"></i>
+                                </button>
                             </div>
-                            <div class="image-container" id="btnFeed" style="display: none;">
-                              <button type="button" class="btn">
-                                  <i class="bi bi-bag-x"></i>
-                              </button>
+                            <div class="image-container" id="btnFeed" style="display: none; align-items: center;">
+                                <button type="button" aria-label="Off" class="btn">
+                                    <i class="bi bi-bag-x"></i>
+                                </button>
                             </div>
-                                  <div class="form-check form-switch">
-                                    <label for="dog-names" style="color: white;">Automatic feeding:</label>
-                                    <input class="form-check-label" type="checkbox" role="switch" id="flexSwitchCheckDefault"> 
-                                  <select name="OpenTime" id="DOpen"> 
-                                      <option value="7am">7:00 AM</option> 
-                                      <option value="8am">8:00 AM</option> 
-                                      <option value="9am">9:00 AM</option> 
-                                      <option value="10am">10:00 AM</option> 
-                                  </select>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-4">
-                        <div class="card mt-5" style="background-color: rgb(77, 127, 110); min-height: 275px;">
+                            <div class="form-check form-switch " style="align-items: center;padding-left: 0px !important;">
+                                <label for="Feedtim" style="color: white;">Automatic feeding:</label>
+                                <input class="form-check-label" type="checkbox" role="switch" id="flexSwitchCheckFeed">
+                                <div class="form-group row">
+                                    <label for="Feedtime" class="col-sm-6 col-form-label" style="color: white;">Feed at:</label>
+                                    <div class="col-sm-6">
+                                        <select name="FeedTime" id="FeedTime" class="form-control">
+                                            <option value="7am">7:00 AM</option>
+                                            <option value="8am">8:00 AM</option>
+                                            <option value="9am">9:00 AM</option>
+                                            <option value="10am">10:00 AM</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                      <div class="col-12 col-md-4">
+                        <div class="card mt-5" style="background-color: rgb(77, 127, 110); min-height: 275px; align-items: center;">
                             <div class="card-body">
                               <div class="overlay-text" style="color: white;">Live Video</div>
-                                <div class="d-flex justify-content-center" id="btnVon"> <!-- This Video Camera -->
-                                    <button type="button" class="btn col-12 text-center">
+                                <div class="d-flex justify-content-center" style="margin-top: 25%;" id="btnVon"> <!-- This Video Camera -->
+                                    <button type="button" aria-label="Video On" class="btn col-12 text-center">
                                         <i class="bi bi-camera-video-off text-warning" style="font-size: 65px;" id="video" data-state="on"></i>
                                     </button>
                                 </div>
                                 <div class="image-container" id="btnVon" style="display: none;">
-                                    <button type="button" class="btn">
+                                    <button type="button"  aria-label="Video Off" class="btn">
                                         <i class="bi bi-camera-video"></i>
                                     </button>
                                 </div>
@@ -315,11 +341,11 @@
           let strErrorMsg = '';
           if (strtxtUsername == "") {
             blnErrorFnd = true;
-            strErrorMsg += " < p > Please input your Username < /p>"
+            strErrorMsg += "  Please input your Username, "
           }
           if (strtxtPassword == "") {
             blnErrorFnd = true;
-            strErrorMsg += " < p > Please input your Password < /p>"
+            strErrorMsg += "  Please input your Password "
           }
           if (blnErrorFnd == true) {
             blnErrorFnd = false;
@@ -346,6 +372,9 @@
         });
         $('#btnLogoutNav').on('click',function(){
           console.log ("LogoutClick")
+          $('#divDashboard').slideUp();
+          $('#Navbar').slideUp();
+          $('#divLogin').slideDown();
         })
         //click events for dashboard
         $('#btnLbOn').on('click',function(){
