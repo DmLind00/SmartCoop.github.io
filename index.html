@@ -20,10 +20,17 @@
               <a class="nav-link disabled" aria-disabled="true" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " aria-disabled="false">Logout</a>
+              <a class="nav-link" aria-disabled="false" role="button" id="btnLogoutNav">Logout</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-disabled="false" href="#">Check us out!</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Check us out!</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#"><i class="bi bi-twitter me-2"></i>Twitter</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Separated link</a>
+              </div>
             </li>
           </ul>
         </div>
@@ -74,7 +81,7 @@
                                 <i class="bi bi-lightbulb-off"></i>
                             </button>
                           </div>
-                                <div class="form-check form-switch" style="text-align: center;">
+                                <div class="form-check form-switch" style="text-align: center; padding-left: 0px !important;">
                                   <label class="form-check-label" for="flexSwitchCheckDefault" style="color: white;">Automatic Timer</label>
                                   <input class="form-check-label" type="checkbox" role="switch" id="flexSwitchCheckDefault" style="height: auto; width: auto;">
                                   <label for="doortime" style="color: white;">Choose an opening time:</label> 
@@ -109,7 +116,7 @@
                                       <i class="bi bi-lightbulb-off"></i>
                                   </button>
                               </div>
-                              <div class="form-check form-switch" style="text-align: center;">
+                              <div class="form-check form-switch" style="text-align: center; padding-left: 0px !important;">
                                 <label class="form-check-label" for="flexSwitchCheckDefault" style="color: white;">Automatic Timer</label>
                                 <input class="form-check-label" type="checkbox" role="switch" id="flexSwitchCheckDefault" style="height: auto; width: auto;">
                                 <label for="lighttime" style="color: white;">Light On:</label> 
@@ -140,9 +147,9 @@
                                 <i class="bi bi-egg-fill text-white" style="font-size: 65px;" id="egg"></i>
                                   <div>
                                     <label type="text">Current Egg Count</label>
-                                    <input id="eggnumber" type="number" value="50">
+                                    <input id="eggnumber" class="form-control" type="number" value="50">
                                     <label type="text">New Eggs Laid</label>
-                                    <input id="eggupdate" type="number">
+                                    <input id="eggupdate" class="form-control" type="number">
                                     <button id="btnegg" class="btn btn-warning mt-1">Add Eggs Laid</button>
                                   </div>
                               </div>
@@ -180,8 +187,8 @@
                         <div class="card mt-5" style="background-color: rgb(77, 127, 110); min-height: 275px;">
                             <div class="card-body">
                               <div class="overlay-text" style="color: white;">Live Video</div>
-                                <div class="image-container" id="btnVon" style="justify-content: center;"> <!-- This Video Camera -->
-                                    <button type="button" class="btn">
+                                <div class="d-flex justify-content-center" id="btnVon"> <!-- This Video Camera -->
+                                    <button type="button" class="btn col-12 text-center">
                                         <i class="bi bi-camera-video-off text-warning" style="font-size: 65px;" id="video" data-state="on"></i>
                                     </button>
                                 </div>
@@ -189,13 +196,6 @@
                                     <button type="button" class="btn">
                                         <i class="bi bi-camera-video"></i>
                                     </button>
-                                    <button>
-                                      <i class bi bi-collection-play></i>
-                                    </button>
-                                    <video >
-                                      <source src="videoplayback.mp4" autoplay muted controls>
-
-                                    </video>
                                 </div>
                               </div>
                             </div>
@@ -344,6 +344,9 @@
             })
           }
         });
+        $('#btnLogoutNav').on('click',function(){
+          console.log ("LogoutClick")
+        })
         //click events for dashboard
         $('#btnLbOn').on('click',function(){
             let strState = $(this).attr('data-state');
@@ -395,6 +398,12 @@
           //Camera
         $('#btnVon').on('click',function(){
             let strState = $(this).attr('data-state');
+            Swal.fire({
+              html: '<video><source src="videoplayback.mp4" autoplay muted controls></video>', 
+              customClass: {
+                popup: 'WideModal', // Apply the custom style to the modal
+            },
+            })
             if(strState == 'on'){
                 $('#btnVon').attr('data-state','off');
                 $('#video').addClass('bi bi-camera-video');
